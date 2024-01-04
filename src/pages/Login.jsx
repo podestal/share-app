@@ -17,12 +17,12 @@ const Login = () => {
     const handleSubmit = e => {
         e.preventDefault()
         mutate({ username, password })
-
+        setUsername('')
+        setPassowrd('')
     }
 
   return (
     <form className='container-sm w-50' onSubmit={handleSubmit}>
-        {console.log('user', user)}
         <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label">Email address</label>
             <input 
