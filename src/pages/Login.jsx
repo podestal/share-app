@@ -1,15 +1,21 @@
 import React, {useState} from 'react'
-import { useLogin } from '../api/api'
+import { login } from '../api/api'
+import { useMutation } from '@tanstack/react-query'
 
 const Login = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassowrd] = useState("")
-    const {mutate} = useLogin({ username, password })
+    const {mutate} = useMutation({
+        mutationFn: data => login(data),
+        onSuccess: res => console.log(res),
+        onError: res=>console.log(err)
+    })
 
     const handleSubmit = e => {
         e.preventDefault()
-        mutate()
+        mutate({ username, password })
+
     }
 
   return (
