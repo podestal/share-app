@@ -1,15 +1,17 @@
 import React, {useState} from 'react'
 import { login } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
+import useUser from '../hooks/useUser'
 
 const Login = () => {
 
+    const {user, setUser} = useUser()
     const [username, setUsername] = useState("")
     const [password, setPassowrd] = useState("")
     const {mutate} = useMutation({
         mutationFn: data => login(data),
-        onSuccess: res => console.log(res),
-        onError: res=>console.log(err)
+        onSuccess: res => setUser({...user, ...res.data}),
+        onError: err=>console.log(err)
     })
 
     const handleSubmit = e => {
@@ -20,6 +22,7 @@ const Login = () => {
 
   return (
     <form className='container-sm w-50' onSubmit={handleSubmit}>
+        {console.log('user', user)}
         <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label">Email address</label>
             <input 
