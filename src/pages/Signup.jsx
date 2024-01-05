@@ -1,29 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { signup } from '../api/api'
+import useUser from '../hooks/useUser'
+import useSignup from '../hooks/useSignup'
 
 const Signup = () => {
 
+    const {user, setUser} = useUser()
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [pwd, setPwd] = useState("")
     const [err, setErr] = useState("")
 
-    const {mutate} = useMutation({
-        mutationFn: data => signup(data),
-        onSuccess: res => console.log(res),
-        onError: err => console.log(err),
-    })
+
+    const {mutate} = useSignup(setUser)
 
     const handleSubmit = e => {
         setErr("")
         e.preventDefault()
         if (password === pwd) {
             mutate({ email, username, password })
+        } else {
+            setErr("Passwords must match")
         }
-        setErr("Passwords must match")
     }
+
+    useEffect(() => {
+        console.log("user", user)
+
+    }, [user])
 
   return (
     <>
