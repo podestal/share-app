@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import { login } from '../api/api'
-import { useMutation } from '@tanstack/react-query'
 import useUser from '../hooks/useUser'
 import useLogin from '../hooks/useLogin'
 
@@ -14,8 +12,9 @@ const Login = () => {
     const handleSubmit = e => {
         e.preventDefault()
         mutate({ username, password })
-        // setUsername('')
-        // setPassowrd('')
+        setUsername('')
+        setPassowrd('')
+
     }
 
     useEffect(() => {
