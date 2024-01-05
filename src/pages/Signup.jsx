@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { signup } from '../api/api'
 import useUser from '../hooks/useUser'
 import useSignup from '../hooks/useSignup'
+import useLogin from '../hooks/useLogin'
 
 const Signup = () => {
 
@@ -14,13 +15,14 @@ const Signup = () => {
     const [err, setErr] = useState("")
 
 
-    const {mutate} = useSignup(setUser)
+    const {mutate: signup} = useSignup(user, setUser, username, password)
+
 
     const handleSubmit = e => {
         setErr("")
         e.preventDefault()
         if (password === pwd) {
-            mutate({ email, username, password })
+            signup({ email, username, password })
         } else {
             setErr("Passwords must match")
         }
