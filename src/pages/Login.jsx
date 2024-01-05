@@ -1,25 +1,26 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { login } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
 import useUser from '../hooks/useUser'
+import useLogin from '../hooks/useLogin'
 
 const Login = () => {
 
     const {user, setUser} = useUser()
     const [username, setUsername] = useState("")
     const [password, setPassowrd] = useState("")
-    const {mutate} = useMutation({
-        mutationFn: data => login(data),
-        onSuccess: res => setUser({...user, ...res.data}),
-        onError: err=>console.log(err)
-    })
+    const {mutate} = useLogin(user, setUser)
 
     const handleSubmit = e => {
         e.preventDefault()
         mutate({ username, password })
-        setUsername('')
-        setPassowrd('')
+        // setUsername('')
+        // setPassowrd('')
     }
+
+    useEffect(() => {
+        console.log("logged user", user);
+    }, [user])
 
   return (
     <form className='container-sm w-50' onSubmit={handleSubmit}>
