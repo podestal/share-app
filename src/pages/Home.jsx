@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useUser from '../hooks/useUser'
 import useServices from '../hooks/useServices'
 import Service from '../components/Service'
+import Purchase from '../components/Purchase'
 
 const Home = () => {
 
@@ -14,11 +15,12 @@ const Home = () => {
 
   return (
     <>
-        {services.data.map(service => (
+        {/* {services.data.map(service => (
           <Service 
             key={service.id} 
             service={service}
-        />))}
+        />))} */}
+        <Purchase />
     </>
   )
 }

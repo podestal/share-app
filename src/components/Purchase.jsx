@@ -8,10 +8,12 @@ const Purchase = () => {
         <form>
             <label htmlFor="three">3 Months</label>
             <input id='three' type='checkbox'/>
-            <label htmlFor="three">6 Months</label>
+            <label htmlFor="six">6 Months</label>
             <input id='six' type='checkbox'/>
-            <label htmlFor="three">9 Months</label>
+            <label htmlFor="nine">9 Months</label>
             <input id='nine' type='checkbox'/>
+            <button>Cancelar</button>
+            <button>Ir a Pagar</button>
         </form>
     </div>
   )
