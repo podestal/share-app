@@ -18,7 +18,7 @@ export const getAccess = async data => data => baseAxios.post(SIGNUP, data, {
     headers: { Authorization: `JWT ${data.refreshToken}` }
 })
 
-export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/`, data ,{
+export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{
     headers: { Authorization: `JWT ${data.access}` }
 })
 

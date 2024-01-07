@@ -9,11 +9,11 @@ const PersistLogin = () => {
     const {mutate} = useCustomer(user, setUser)
 
     useEffect(() => {
+        const access = JSON.parse(localStorage.getItem('access'))
         if (!user?.accessToken) {
-            const access = JSON.parse(localStorage.getItem('access'))
             setUser({ ...user, accessToken: access })
-            mutate({ access })
         }
+        mutate({ access })
     }, [])
 
   return (
