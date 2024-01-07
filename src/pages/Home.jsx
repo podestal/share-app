@@ -20,6 +20,7 @@ const Home = () => {
             key={service.id} 
             service={service}
         />))} */}
+        {console.log(user)}
         <Purchase />
     </>
   )

@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import useUser from '../hooks/useUser'
 import useLogin from '../hooks/useLogin'
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
 
     const {user, setUser} = useUser()
     const [username, setUsername] = useState("")
     const [password, setPassowrd] = useState("")
-    const {mutate} = useLogin(user, setUser)
+    const [error, setError] = useState("")
+    const navigate = useNavigate()
+    const {mutate} = useLogin(user, setUser, setError, setUsername, setPassowrd, navigate)
 
     const handleSubmit = e => {
         e.preventDefault()
         mutate({ username, password })
-        setUsername('')
-        setPassowrd('')
-
     }
 
     useEffect(() => {
@@ -23,6 +23,7 @@ const Login = () => {
 
   return (
     <form className='container-sm w-50' onSubmit={handleSubmit}>
+        <p>{error}</p>
         <div className="mb-3">
             <label for="exampleInputEmail1" className="form-label">Email address</label>
             <input 

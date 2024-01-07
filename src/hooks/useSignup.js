@@ -9,8 +9,7 @@ const useSignup = (user, setUser, username,  password) => {
     return useMutation({
         mutationFn: (data) => signup(data),
         onSuccess: res => {
-            setUser({ ...res.data })
-            login({ username, password })
+            setUser({ ...res.data, active: false })
         },
         onError: err => setErr(err.message),
     })

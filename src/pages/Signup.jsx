@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
-import { signup } from '../api/api'
 import useUser from '../hooks/useUser'
 import useSignup from '../hooks/useSignup'
-import useLogin from '../hooks/useLogin'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
 
@@ -13,7 +11,7 @@ const Signup = () => {
     const [password, setPassword] = useState("")
     const [pwd, setPwd] = useState("")
     const [err, setErr] = useState("")
-
+    const navigate = useNavigate()
 
     const {mutate: signup} = useSignup(user, setUser, username, password)
 
@@ -23,9 +21,11 @@ const Signup = () => {
         e.preventDefault()
         if (password === pwd) {
             signup({ email, username, password })
+            navigate('/login')
         } else {
             setErr("Passwords must match")
         }
+
     }
 
     useEffect(() => {
