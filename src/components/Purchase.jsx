@@ -1,17 +1,21 @@
 import React from 'react'
+import Select from 'react-select'
 
-const Purchase = () => {
+const Purchase = ({ screen }) => {
+
+  const options = [
+    {value: 'T', label: 'Three Months'},
+    {value: 'S', label: 'Six Months'},
+    {value: 'N', label: 'Nine Months'},
+  ]
+
   return (
     <div className='purchase-card'>
-        <h3>Price: 10</h3>
+        <h2>{screen.service.platform}</h2>
+        <h3>Price: {screen.service.price}</h3>
         <p>Period:</p>
+        <Select options={options}/>
         <form>
-            <label htmlFor="three">3 Months</label>
-            <input id='three' type='checkbox'/>
-            <label htmlFor="six">6 Months</label>
-            <input id='six' type='checkbox'/>
-            <label htmlFor="nine">9 Months</label>
-            <input id='nine' type='checkbox'/>
             <button>Cancelar</button>
             <button>Ir a Pagar</button>
         </form>
