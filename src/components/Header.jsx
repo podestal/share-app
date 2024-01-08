@@ -10,16 +10,17 @@ const Header = () => {
     <>
       <h1>Logo</h1>
       <nav>
-        {user
+        {user?.accessToken
         ?
         <>
-          <p><Link to={'/'}>Home</Link></p>
+          <p><Link to={'/subscription'}>Subscription</Link></p>
           <p><Link to={'/profile'}>Profile</Link></p>
           <Logout />
         </>
         :
         <>
-          <p><Link>About Us</Link></p>
+          <p><Link to={'/'}>Home</Link></p>
+          <p><Link to={'/about'}>About Us</Link></p>
           <p><Link to={'/login'}>Login</Link></p>
         </>
         }

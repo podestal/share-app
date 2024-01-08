@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useUser from '../hooks/useUser'
 import useSignup from '../hooks/useSignup'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Signup = () => {
 
@@ -63,6 +64,7 @@ const Signup = () => {
             />
             <button type='submit'>Signup</button>
         </form>
+        <p>Already have an account? <Link to={'/login'}>Login</Link></p>
     </>
   )
 }

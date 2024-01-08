@@ -6,6 +6,7 @@ import Profile from "./pages/Profile"
 import Home from "./pages/Home"
 import PersistLogin from "./components/PersistLogin"
 import AuthRequired from "./components/AuthRequired"
+import About from "./pages/About"
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           </Route>
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>
+          <Route path="about" element={<About />} />
         </Routes>
       </div>
     </div>
