@@ -1,20 +1,25 @@
 import React from 'react'
 import useUser from '../hooks/useUser';
+import { useNavigate } from 'react-router-dom';
+
 
 const Logout = () => {
 
     const {setUser} = useUser()
+    const navigate = useNavigate()
 
-    const handleLogout = () => {
-        setUser({})
+    const handleLogout = e => {
+        e.preventDefault()
+        setUser()
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')
+        navigate('/login')
     }
 
   return (
-    <button onClick={handleLogout}>
-        Logout
-    </button>
+    <form onSubmit={handleLogout}>
+        <button>Logout</button>
+    </form>
   )
 }
 

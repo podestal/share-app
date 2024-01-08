@@ -5,6 +5,7 @@ import Signup from "./pages/Signup"
 import Profile from "./pages/Profile"
 import Home from "./pages/Home"
 import PersistLogin from "./components/PersistLogin"
+import AuthRequired from "./components/AuthRequired"
 
 
 const App = () => {
@@ -12,12 +13,15 @@ const App = () => {
 
   return (
     <div className="main">
-      <Header />
+
       <div className="main-body">
+         <Header />
         <Routes>
           <Route element={<PersistLogin />}>
-            <Route path="" element={<Home />}/>
-            <Route path="profile" element={<Profile />}/>
+            <Route element={<AuthRequired />}>
+              <Route path="" element={<Home />}/>
+              <Route path="profile" element={<Profile />}/>
+            </Route>
           </Route>
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>

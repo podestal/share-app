@@ -15,6 +15,7 @@ const PersistLogin = () => {
     const {mutate: refresh} = useRefresh(user, setUser, setAccess)
 
     useEffect(() => {
+        console.log('from persist login', user);
         const exp = jwtDecode(access).exp
         const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
         if (isExpired) {
@@ -28,7 +29,7 @@ const PersistLogin = () => {
 
   return (
     <div>
-        {<Outlet />}
+        {access && <Outlet />}
     </div>
   )
 }

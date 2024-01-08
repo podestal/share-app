@@ -5,8 +5,13 @@ const useCustomer = (user, setUser) => {
     return useMutation({
         mutationFn: (data) => getCustomer(data),
         onSuccess: res => {
-            console.log("from useCustomer", res.data)
-            setUser({ ...res.data, ...res.data.user, ...user })
+            setUser({ 
+                customerId: res.data.id, 
+                active: res.data.active,
+                screens: res.data.screens,
+                ...res.data.user, 
+                ...user 
+            })
         },
         onError: err => console.log(err)
     })

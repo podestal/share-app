@@ -14,13 +14,8 @@ const Home = () => {
     if (isError) return <p>{error.message}</p>
 
   return (
-    <>
-        {/* {services.data.map(service => (
-          <Service 
-            key={service.id} 
-            service={service}
-        />))} */}
-        {console.log(user)}
+    <>  
+        {console.log('user from home', user)}
         <Purchase />
     </>
   )
