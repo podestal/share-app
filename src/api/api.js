@@ -15,10 +15,6 @@ export const login = async data => baseAxios.post(LOGIN, data)
 
 export const signup = async data => baseAxios.post(SIGNUP, data)
 
-// export const getAccess = async data => data => baseAxios.post(SIGNUP, data, {
-//     headers: { Authorization: `JWT ${data.refresh}` }
-// })
-
 export const refresh = async data => baseAxios.post(REFRESH, data)
 
 export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useUser from '../hooks/useUser'
 import useServices from '../hooks/useServices'
-import Service from '../components/Service'
-import Purchase from '../components/Purchase'
+import Services from '../components/Services'
 
 const Home = () => {
 
@@ -16,7 +15,7 @@ const Home = () => {
   return (
     <>  
         {console.log('user from home', user)}
-        <Purchase />
+        <Services />
     </>
   )
 }

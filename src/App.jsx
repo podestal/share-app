@@ -7,7 +7,7 @@ import Home from "./pages/Home"
 import PersistLogin from "./components/PersistLogin"
 import AuthRequired from "./components/AuthRequired"
 import About from "./pages/About"
-import Subscription from "./components/Subscription"
+import Subscription from "./pages/Subscription"
 
 
 const App = () => {

@@ -1,20 +1,11 @@
 import React from 'react'
 
 const Service = ({ service }) => {
-
-    const handleBuy = () => {
-
-    }
-
   return (
-    <>
-        <div>
-            <h2>{service.title}</h2>
-            <p>{service.screen_price}</p>
-            <button onClick={handleBuy}>Comprar Ahora</button>
-            <p>Detalles</p>
-        </div>
-    </>
+    <div>
+        <h3>{service.platform}</h3>
+        <p>$.{service.price}.00</p>
+    </div>
   )
 }
 
