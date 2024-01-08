@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <h1>Logo</h1>
+      <h1><Link to={'/'}>Logo</Link></h1>
       <nav>
         {user?.accessToken
         ?
@@ -19,7 +19,7 @@ const Header = () => {
         </>
         :
         <>
-          <p><Link to={'/'}>Home</Link></p>
+          <p><Link to={'/'}>Home Page</Link></p>
           <p><Link to={'/about'}>About Us</Link></p>
           <p><Link to={'/login'}>Login</Link></p>
         </>

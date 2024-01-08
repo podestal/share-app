@@ -7,6 +7,7 @@ import Home from "./pages/Home"
 import PersistLogin from "./components/PersistLogin"
 import AuthRequired from "./components/AuthRequired"
 import About from "./pages/About"
+import Subscription from "./components/Subscription"
 
 
 const App = () => {
@@ -20,10 +21,11 @@ const App = () => {
         <Routes>
           <Route element={<PersistLogin />}>
             <Route element={<AuthRequired />}>
-              <Route path="" element={<Home />}/>
               <Route path="profile" element={<Profile />}/>
+              <Route path="subscription" element={<Subscription />}/>
             </Route>
           </Route>
+          <Route path="" element={<Home />}/>
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />
