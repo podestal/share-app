@@ -8,11 +8,11 @@ const AuthRequired = () => {
     const [access, setAccess] = useState(JSON.parse(localStorage.getItem('access')) || "")
 
     useEffect(() => {
-        console.log('from require auth', user)
+        console.log('from require auth', access)
     }, [])
 
   return (
-        access
+        access 
         ? <Outlet />
         : <Navigate to='/login' />
   )

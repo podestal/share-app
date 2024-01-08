@@ -24,10 +24,10 @@ const App = () => {
             <Route element={<AuthRequired />}>
               <Route path="profile" element={<Profile />}/>
               <Route path="subscription" element={<Subscription />}/>
+              <Route path="service/:id" element={<Service />}/>
             </Route>
           </Route>
           <Route path="" element={<Home />}/>
-          <Route path="service/:id" element={<Service />}/>
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />
