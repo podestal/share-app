@@ -19,19 +19,11 @@ const Purchase = ({ screen }) => {
     e.preventDefault()
     console.log(screen.id)
 
-    // Fix the mutation, URL is good,
-    // data is not getting through
     mutate({ id: screen.id, updates: {
       available: false, 
       period, 
       customer: user.customerId,
     }})
-    //   id,
-    // { 
-    //   available: false, 
-    //   period,
-    //   customer: user.customerId,
-    // })
   }
 
   return (
