@@ -11,20 +11,31 @@ const Purchase = ({ screen }) => {
     {value: 'N', label: 'Nueve Meses'},
   ]
 
-  const {user} = useUser()
+  const {user} = useUser(screen.id)
   const [period, setPeriod] = useState("")
   const {mutate} = usePurchase()
 
   const handleSubmit = e => {
     e.preventDefault()
-    mutate({ 
-      available: true, 
-    })
+    console.log(screen.id)
+
+    // Fix the mutation, URL is good,
+    // data is not getting through
+    mutate({ id: screen.id, updates: {
+      available: false, 
+      period, 
+      customer: user.customerId,
+    }})
+    //   id,
+    // { 
+    //   available: false, 
+    //   period,
+    //   customer: user.customerId,
+    // })
   }
 
   return (
     <div className='purchase-card'>
-        {console.log('from purchase', user)}
         <h2>{screen.service.platform}</h2>
         <h3>Price: {screen.service.price}</h3>
         <p>Period:</p>

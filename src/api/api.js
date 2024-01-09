@@ -27,4 +27,4 @@ export const services = async data => baseAxios.get(SERVICES)
     
 export const screen = async data => baseAxios.get(`${SCREEN}${data.id}`)
 
-export const updateScreen = async data => baseAxios.put(`${UPDATE_SCREEN}${data.id}/`, data)
+export const updateScreen = async data => baseAxios.put(`${UPDATE_SCREEN}${data.id}/`, data.updates)
