@@ -6,6 +6,7 @@ import useRefresh from '../hooks/useRefresh'
 import { jwtDecode } from "jwt-decode";
 import { Navigate } from 'react-router-dom'
 import dayjs from "dayjs";
+import moment from 'moment'
 
 const PersistLogin = () => {
 
@@ -25,6 +26,7 @@ const PersistLogin = () => {
             setUser({ ...user, accessToken: access })
         }
         getCustomer({ access })
+        console.log(moment().format('YYYY MM DD'));
     }, [])
 
   return (

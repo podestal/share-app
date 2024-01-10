@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import usePurchase from '../hooks/usePurchase'
 import useUser from '../hooks/useUser'
+import moment from 'moment'
 
 const Purchase = ({ screen }) => {
+
+  
 
   const options = [
     {value: 'T', label: 'Tres Meses'},
@@ -23,6 +26,7 @@ const Purchase = ({ screen }) => {
       available: false, 
       period, 
       customer: user.customerId,
+      subscribed_at:moment().format('YYYY-MM-DD'),
     }})
   }
 
