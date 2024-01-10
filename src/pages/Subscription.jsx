@@ -1,33 +1,39 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import useUser from "../hooks/useUser"
-import useCustomerScreen from "../hooks/useCustomerScreen"
-import { useQuery } from "@tanstack/react-query"
-import { customerScreen } from "../api/api"
 import SubscriptionItem from "../components/SubscriptionItem"
+import useCustomerScreen from "../hooks/useCustomerScreen"
+import { useMutation } from "@tanstack/react-query"
+import { customerScreen } from "../api/api"
+
 
 const Subscription = () => {
 
   const {user} = useUser()
+  const [subscriptions, useSubscriptions] = useState([])
 
-  const {data: subscriptions, isLoading, isError, error} = useQuery({
-    queryKey: ['subscriptions'],
-    queryFn: () => customerScreen({ id: user.customerId, access: user.accessToken })
+  const {mutate} = useMutation({
+    mutationFn: data => customerScreen(data),
+    onSuccess: res => useSubscriptions(res.data),
+    onError: err => console.log(err),
   })
 
+
+
   useEffect(() => {
-    console.log('user from subscription', user);
-  }, [])
+    console.log('user from subscription', user)
+    mutate({ id: user?.customerId, access: user?.accessToken})
+  }, [user])
 
-  if (isLoading) return <p>Loading ...</p>
+  // if (isLoading) return <p>Loading ...</p>
 
-  if (isError) return <p>{error.message}</p>
+  // if (isError) {console.log(error)}
 
   return (
     <div>
-        {subscriptions.length > 0
+        {subscriptions?.length > 0
         ? 
         <>
-        {subscriptions.data.map(subscription => (
+        {subscriptions.map(subscription => (
           <SubscriptionItem 
             key={subscription.id}
             subscription={subscription}
@@ -36,7 +42,8 @@ const Subscription = () => {
         </>
         :
         <p>You do not have any subscriptions yet</p>}
-
+        {/* {console.log('user from subscription', user)}
+        subscriptions */}
         
     </div>
   )
