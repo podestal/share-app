@@ -13,7 +13,7 @@ const Purchase = ({ screen }) => {
 
   const {user} = useUser()
   const [period, setPeriod] = useState("")
-  const {mutate} = usePurchase(screen.id)
+  const {mutate} = usePurchase()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -28,8 +28,8 @@ const Purchase = ({ screen }) => {
 
   return (
     <div className='purchase-card'>
-        <h2>{screen.service.platform}</h2>
-        <h3>Price: {screen.service.price}</h3>
+        <h2>{screen?.service.platform}</h2>
+        <h3>Price: {screen?.service.price}</h3>
         <p>Period:</p>
         <form onSubmit={handleSubmit}>
           <Select 

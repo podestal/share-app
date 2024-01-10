@@ -20,12 +20,21 @@ const Services = () => {
   return (
     <div>
         <p>Services</p>
-        {services.data.map(service => (
+        {/* {services.data.map(service => (
             <Service 
                 key={service.id}
                 service={service}
             />
-        ))}
+        ))} */}
+        {services.data
+            .filter(service => service.screens > 0)
+            .map(service => (
+                <Service 
+                    key={service.id}
+                    service={service}
+                />
+            ))
+        }
     </div>
   )
 }

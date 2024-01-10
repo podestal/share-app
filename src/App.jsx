@@ -23,6 +23,7 @@ const App = () => {
           <Route element={<PersistLogin />}>
             <Route element={<AuthRequired />}>
               <Route path="home" element={<Home />} />
+              <Route path="about-us" element={<About />}/>
               <Route path="profile" element={<Profile />}/>
               <Route path="subscription" element={<Subscription />}/>
               <Route path="service/:id" element={<Service />}/>

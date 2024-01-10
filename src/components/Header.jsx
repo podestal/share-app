@@ -14,6 +14,7 @@ const Header = () => {
         ?
         <>
           <p><Link to={'/subscription'}>Subscription</Link></p>
+          <p><Link to={'/about-us'}>About Us</Link></p>
           <p><Link to={'/profile'}>Profile</Link></p>
           <Logout />
         </>
