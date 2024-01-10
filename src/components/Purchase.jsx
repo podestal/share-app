@@ -11,9 +11,9 @@ const Purchase = ({ screen }) => {
     {value: 'N', label: 'Nueve Meses'},
   ]
 
-  const {user} = useUser(screen.id)
+  const {user} = useUser()
   const [period, setPeriod] = useState("")
-  const {mutate} = usePurchase()
+  const {mutate} = usePurchase(screen.id)
 
   const handleSubmit = e => {
     e.preventDefault()

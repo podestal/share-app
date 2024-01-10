@@ -16,20 +16,22 @@ const PersistLogin = () => {
     const {mutate: refresh} = useRefresh(user, setUser, setAccess)
 
     useEffect(() => {
-        console.log('from persist login', user);
-        const exp = jwtDecode(access).exp
-        const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
-        if (isExpired) {
-            refresh({ refresh: refreshToken })
+        if (access) {
+            const exp = jwtDecode(access).exp
+            const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
+            if (isExpired) {
+                refresh({ refresh: refreshToken })
+            }
+            else if (!user?.accessToken) {
+                setUser({ ...user, accessToken: access })
+            }
+            getCustomer({ access })
         }
-        else if (!user?.accessToken) {
-            setUser({ ...user, accessToken: access })
-        }
-        getCustomer({ access })
-    }, [access])
+    }, [])
 
   return (
     <div>
+        {console.log('from persist login', user)}
         {access ? <Outlet /> : <Navigate to={'/login'}/>}
     </div>
   )

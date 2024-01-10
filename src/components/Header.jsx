@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <h1><Link to={'/'}>Logo</Link></h1>
+      <h1><Link to={user ? '/home' : '/'}>Logo</Link></h1>
       <nav>
         {user?.accessToken
         ?
