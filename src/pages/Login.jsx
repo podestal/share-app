@@ -23,24 +23,25 @@ const Login = () => {
     }, [user])
 
   return (
-    <div>
+    <div className='access-container'>
+        <h2 className='access-container-title'>Inicia Sesión</h2>
+        {error && <p className='access-container-error'>{error}</p>}
         <form onSubmit={handleSubmit}>
-            <p>{error}</p>
                 <input 
                     type="text" 
-                    placeholder='Username'
+                    placeholder='Usuario'
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                 />
                 <input 
                     type="password" 
-                    placeholder='Password'
+                    placeholder='Contraseña'
                     value={password}
                     onChange={e => setPassowrd(e.target.value)}
                 />
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Ingresa</button>
         </form>
-        <p>Don't have an account? <Link to={'/signup'}>Signup</Link> </p>
+        <p>Aún no tienes cuenta? <Link to={'/signup'}>Regístrate</Link> </p>
     </div>
     
   )

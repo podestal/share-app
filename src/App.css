@@ -204,3 +204,53 @@
 .subscription-features ul li {
     list-style: none;
 }
+
+/* Access/ Signup */
+
+.access-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    height: 60vh;
+    border: 3px solid;
+    border-image: linear-gradient(
+        to right, #07c8f9, #0d41e1
+    );
+    border-image-slice: 1;
+}
+
+.access-container-title {
+    font-weight: bold;
+    margin: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.access-container-error {
+    background-color: #e40713;
+    padding: 0.6rem;
+    border-radius: 15px;
+}
+
+.access-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80%;
+    width: 70%;
+    margin: 20px;
+}
+
+.access-container form input {
+    margin: 1rem;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.access-container form button {
+    width: 40%;
+    margin: 0 auto;
+}
