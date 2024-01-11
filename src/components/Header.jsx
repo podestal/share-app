@@ -7,27 +7,30 @@ const Header = () => {
   const { user } = useUser()
 
   return (
-    <>
-      <h1><Link to={user ? '/home' : '/'}>Logo</Link></h1>
-      <nav>
+    <div className='header'>
+      <dir className='header-logo-container'>
+        <Link to={user ? '/home' : '/'}><h1 className='header-logo'>Logo</h1></Link>
+      </dir>
+      
+      <nav className='header-nav'>
         {user?.accessToken
         ?
         <>
-          <p><Link to={'/subscription'}>Subscription</Link></p>
-          <p><Link to={'/about-us'}>About Us</Link></p>
-          <p><Link to={'/profile'}>Profile</Link></p>
+          <Link to={'/subscription'}>Subscription</Link>
+          <Link to={'/about-us'}>About Us</Link>
+          <Link to={'/profile'}>Profile</Link>
           <Logout />
         </>
         :
         <>
-          <p><Link to={'/'}>Home Page</Link></p>
-          <p><Link to={'/about'}>About Us</Link></p>
-          <p><Link to={'/login'}>Login</Link></p>
+          <Link to={'/'}>Home Page</Link>
+          <Link to={'/about'}>About Us</Link>
+          <Link to={'/login'}>Login</Link>
         </>
         }
 
       </nav>
-    </>
+    </div>
   )
 }
 
