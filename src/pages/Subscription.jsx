@@ -29,7 +29,7 @@ const Subscription = () => {
   // if (isError) {console.log(error)}
 
   return (
-    <div>
+    <div className="subscriptions-container">
         {subscriptions?.length > 0
         ? 
         <>

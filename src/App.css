@@ -7,13 +7,9 @@
 
 /* main */
 
-#root {
-    /* height: 100%; */
-    background-color: #0c090d;
-}
-
 .main {
     height: 100%;
+    color: #f5f3f4;
 }
 
 /* Header */
@@ -24,7 +20,7 @@
     align-items: center;
     height: 19vh;
     width: 100%;
-    background-color: black;
+    background-color: #000;
 }
 
 .header-logo-container {
@@ -34,7 +30,7 @@
 }
 
 .header-logo-container a {
-    color: white;
+    color: #f5f3f4;
     text-decoration: none;
 }
 
@@ -43,7 +39,7 @@
 }
 
 .header-logo:hover {
-    color: #ecf0f1;
+    color: #bbd1ea;
 }
 
 .header-nav {
@@ -55,19 +51,19 @@
 }
 
 .header-nav a {
-    color: white;
+    color: #f5f3f4;
     text-decoration: none;
 }
 
 .header-nav a:hover {
-    color: #ecf0f1;
+    color: #bbd1ea;
+    border-bottom: 1px solid #0061ff;
 }
 
 /* Services */
 
 .services-container {
     display: grid;
-    /* grid-template-rows: 1fr, 1fr, 1fr; */
     grid-template-columns: repeat(3, 1fr);
 }
 
@@ -82,9 +78,14 @@
     margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
-    border-radius: 15px;
     padding-top: 40px;
     padding-bottom: 40px;
+    border: 4px solid;
+    border-image: linear-gradient(
+        to right, #0061ff, #60efff
+    );
+    border-image-slice: 1;
+    border-radius: 15px;
 }
 
 .service-container a {
@@ -118,7 +119,88 @@
 .service-btn {
     /* margin: auto; */
     margin: 15px;
-    font-weight: bold;
-    
+    font-weight: bold; 
 }
 
+/* Subscriptions */
+
+.subscriptions-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Subscription */
+
+.subscription-container {
+    border-image: linear-gradient(
+        to right, #151515, #38ef7d
+    );
+    border-image-slice: 1;
+    width: 75%;
+}
+
+.subscription-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px;
+    height: 5rem;
+}
+
+.subscription-header button {
+    background-color: #38ef7d;
+    border: none;
+    width: 30%;
+    padding: 0.6rem 0;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.subscription-platform {
+    width: 50%;
+    padding: 1rem 0;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.subscription-platform-paramount {
+    background-color: #2a5d93;
+}
+
+.subscription-platform-netflix {
+    background-color: #e40713;
+}
+
+.subscription-platform-disney {
+    background-color: #23046c;
+}
+
+.subscription-platform-prime {
+    background-color: #4da5dc;
+}
+
+.subscription-body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.subscription-details {
+    text-align: left;
+    margin: 1rem;
+}
+
+.subscription-details p {
+    border-bottom: 1px solid grey;
+    margin: 30px 0;
+}
+
+.subscription-features {
+    text-align: right;
+    margin: 1rem;
+    line-height: 3rem;
+}
+
+.subscription-features ul li {
+    list-style: none;
+}
