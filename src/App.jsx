@@ -17,7 +17,6 @@ const App = () => {
 
   return (
     <div className="main">
-
       <div className="main-body">
          <Header />
         <Routes>

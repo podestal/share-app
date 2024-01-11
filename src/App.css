@@ -63,8 +63,8 @@
 /* Services */
 
 .services-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
 }
 
 /* Service */
@@ -78,15 +78,25 @@
     margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
     border: 4px solid;
     border-image: linear-gradient(
         to right, #0061ff, #60efff
     );
     border-image-slice: 1;
     border-radius: 15px;
+    /* background: url("./assets/services-pics/netflix-service.jpg") no-repeat center center/cover;
+    position: relative; */
 }
+
+/* .service-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+} */
 
 .service-container a {
     text-decoration: none;
@@ -120,6 +130,48 @@
     /* margin: auto; */
     margin: 15px;
     font-weight: bold; 
+}
+
+.service-container-show {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+.service-container-show .service-img{
+    width: 30%;
+    position: relative;
+}
+
+.service-container-show .service-img-netflix {
+    background: url("./assets/services-pics/netflix-service.jpg") no-repeat center center/cover;
+}
+
+.service-container-show .service-img-disney {
+    background: url("./assets/services-pics/disney-service.jpg") no-repeat center center/cover;
+}
+
+.service-container-show .service-img-prime {
+    background: url("./assets/services-pics/prime-service.jpg") no-repeat center center/cover;
+}
+
+.service-container-show .service-img-paramount {
+    background: url("./assets/services-pics/paramount-service.jpg") no-repeat center center/cover;
+}
+
+.service-container-show .service-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.service-container-show .service-data {
+    width: 70%;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* Subscriptions */
