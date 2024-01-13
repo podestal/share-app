@@ -8,11 +8,13 @@ import Features from './Features'
 const Purchase = ({ screen }) => {
 
   const options = [
-    {value: 'T', label: 'Tres Meses'},
-    {value: 'S', label: 'Seis Meses'},
-    {value: 'N', label: 'Nueve Meses'},
+    {value: 'T', label: 'Tres Meses', price: (screen?.service.price).toFixed(2)},
+    {value: 'S', label: 'Seis Meses', price: (screen?.service.price * 0.95).toFixed(2)},
+    {value: 'N', label: 'Nueve Meses', price: (screen?.service.price * 0.90).toFixed(2)},
   ]
 
+
+  const [price, setPrice] = useState(screen?.service.price.toFixed(2))
   const {user} = useUser()
   const [period, setPeriod] = useState("")
   const {mutate} = usePurchase()
@@ -33,12 +35,14 @@ const Purchase = ({ screen }) => {
   return (
     <div className='purchase-card'>
         <h2>{screen?.service.platform}</h2>
-        <h3>Price: {screen?.service.price}</h3>
+        <h3>Price: {price}</h3>
         <p>Period:</p>
         <form onSubmit={handleSubmit}>
           <Select 
             options={options}
-            onChange={option => setPeriod(option.value)}
+            onChange={option => {
+              setPrice(option.price)
+              setPeriod(option.value)}}
           />
           <button type='submit'>Ir a Pagar</button>
         </form>
