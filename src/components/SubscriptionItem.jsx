@@ -9,7 +9,6 @@ const SubscriptionItem = ({ subscription }) => {
         'N': [90, '90 Días'],
     }
     
-
     const dueDate = moment(subscription?.subscribed_at).add(period[subscription?.period][0], 'days').calendar()
 
   return (
@@ -22,7 +21,7 @@ const SubscriptionItem = ({ subscription }) => {
             <div className='subscription-details'>
                 <p>Periodo: {period[subscription.period][1]}</p>
                 <p>Usuario: {subscription.username}</p>
-                <p>Contraseña: {subscription.password}</p>
+                <p>Contraseña: </p>
                 <p>Fecha de vencimiento: {dueDate}</p>
             </div>
             <dir className='subscription-features'>
