@@ -2,7 +2,7 @@ import React from 'react'
 import useFeatures from '../hooks/useFeatures'
 import Feature from './Feature'
 
-const Features = ({ serviceId }) => {
+const Features = ({ serviceId, serviceTitle }) => {
 
     const {data: features, isLoading, isError, error} = useFeatures()
 
@@ -12,7 +12,7 @@ const Features = ({ serviceId }) => {
 
   return (
     <div>
-        <h2>Features</h2>
+        <h2>{serviceTitle}</h2>
         {features.data
             .filter(feature => feature.service == serviceId || feature.service == 5)
             .map(feature => (

@@ -316,11 +316,33 @@
 
 .purchase-container {
     display: flex;
-    width: 70%;
-    margin: 3rem auto;
     justify-content: space-between;
+    width: 70%;
+    /* height: 100vh; */
+    margin: auto;
+    margin-top: 3rem;
+    text-align: center;
 }
 
-.purchase-container .purchase-container-options {
-    
-} 
+.purchase-options-container {
+    width: 25%;
+}
+
+.purchase-options-container button {
+    margin: 2rem;
+}
+
+.purchase-platform-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    width: 15rem;
+    height: 15rem;
+    margin: auto;
+}
+
+.purchase-features-container {
+    text-align: right;
+    width: 35%;
+}

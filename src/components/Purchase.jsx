@@ -42,7 +42,6 @@ const Purchase = ({ screen }) => {
   return (
     <div className='purchase-container'>
         <div className='purchase-options-container'>
-          <h2>{screen?.service.platform}</h2>
           <h3>Price: {price}</h3>
           <p>Period:</p>
           <form onSubmit={handleSubmit}>
@@ -56,9 +55,15 @@ const Purchase = ({ screen }) => {
             <button className='btn btn-primary' type='submit'>Ir a Pagar</button>
           </form>
         </div>
+        <div className={`purchase-platform-logo subscription-platform-${(screen?.service.platform).toLowerCase()}`}>
+          <h2>
+            {screen?.service.platform}
+          </h2>
+        </div>
         <div className='purchase-features-container'>
           <Features 
             serviceId={screen.service.id}
+            serviceTitle={screen.service.platform}
           />
         </div>
     </div>

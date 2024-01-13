@@ -4,22 +4,25 @@ import moment from 'moment'
 const SubscriptionItem = ({ subscription }) => {
 
     const period = {
-        'T': [30, '30 Días'],
-        'S': [60, '60 Días'],
-        'N': [90, '90 Días'],
+        'T': 30,
+        'S': 60,
+        'N': 90,
     }
+
+    const addDays = period[subscription?.period]
     
-    const dueDate = moment(subscription?.subscribed_at).add(period[subscription?.period][0], 'days').calendar()
+    const dueDate = moment(subscription?.subscribed_at).add(addDays, 'days').calendar()
 
   return (
     <div className='service-container subscription-container'>
+            {console.log('days', addDays)}
         <div className='subscription-header'>
             <h2 className={`subscription-platform subscription-platform-${(subscription.service.platform).toLowerCase()}`}>{subscription.service.platform}</h2>
             <button>Renovar</button>
         </div>
         <div className='subscription-body'>
             <div className='subscription-details'>
-                <p>Periodo: {period[subscription.period][1]}</p>
+                <p>Periodo: {period[subscription.period]} días</p>
                 <p>Usuario: {subscription.username}</p>
                 <p>Contraseña: </p>
                 <p>Fecha de vencimiento: {dueDate}</p>
