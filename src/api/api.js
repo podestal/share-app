@@ -8,6 +8,7 @@ const CUSTOMER = 'api/customers/'
 const SERVICES = 'api/services/'
 const BASE_SCREENS = '/api/screens/'
 const SCREEN = '/api/screens/?available=true&service='
+const FEATURES = '/api/features/'
 
 const baseAxios = axios.create({
     baseURL: BASE_URL
@@ -32,3 +33,5 @@ export const updateScreen = async data => baseAxios.put(`${BASE_SCREENS}${data.i
 export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?customer=${data.id}`, {
     headers: { Authorization: `JWT ${data.access}` }
 })
+
+export const features = async data => baseAxios.get(FEATURES)

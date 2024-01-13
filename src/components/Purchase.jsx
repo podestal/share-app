@@ -3,10 +3,9 @@ import Select from 'react-select'
 import usePurchase from '../hooks/usePurchase'
 import useUser from '../hooks/useUser'
 import moment from 'moment'
+import Features from './Features'
 
 const Purchase = ({ screen }) => {
-
-  
 
   const options = [
     {value: 'T', label: 'Tres Meses'},
@@ -17,6 +16,7 @@ const Purchase = ({ screen }) => {
   const {user} = useUser()
   const [period, setPeriod] = useState("")
   const {mutate} = usePurchase()
+  
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -42,6 +42,9 @@ const Purchase = ({ screen }) => {
           />
           <button type='submit'>Ir a Pagar</button>
         </form>
+        <Features 
+          serviceId={screen.service.id}
+        />
     </div>
   )
 }
