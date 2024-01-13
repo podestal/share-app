@@ -5,6 +5,14 @@ import useUser from '../hooks/useUser'
 import moment from 'moment'
 import Features from './Features'
 
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    color: 'black',
+    padding: 10,
+  }),
+}
+
 const Purchase = ({ screen }) => {
 
   const options = [
@@ -12,7 +20,6 @@ const Purchase = ({ screen }) => {
     {value: 'S', label: 'Seis Meses', price: (screen?.service.price * 0.95).toFixed(2)},
     {value: 'N', label: 'Nueve Meses', price: (screen?.service.price * 0.90).toFixed(2)},
   ]
-
 
   const [price, setPrice] = useState(screen?.service.price.toFixed(2))
   const {user} = useUser()
@@ -33,22 +40,27 @@ const Purchase = ({ screen }) => {
   }
 
   return (
-    <div className='purchase-card'>
-        <h2>{screen?.service.platform}</h2>
-        <h3>Price: {price}</h3>
-        <p>Period:</p>
-        <form onSubmit={handleSubmit}>
-          <Select 
-            options={options}
-            onChange={option => {
-              setPrice(option.price)
-              setPeriod(option.value)}}
+    <div className='purchase-container'>
+        <div className='purchase-options-container'>
+          <h2>{screen?.service.platform}</h2>
+          <h3>Price: {price}</h3>
+          <p>Period:</p>
+          <form onSubmit={handleSubmit}>
+            <Select 
+              options={options}
+              styles={customStyles}
+              onChange={option => {
+                setPrice(option.price)
+                setPeriod(option.value)}}
+            />
+            <button className='btn btn-primary' type='submit'>Ir a Pagar</button>
+          </form>
+        </div>
+        <div className='purchase-features-container'>
+          <Features 
+            serviceId={screen.service.id}
           />
-          <button type='submit'>Ir a Pagar</button>
-        </form>
-        <Features 
-          serviceId={screen.service.id}
-        />
+        </div>
     </div>
   )
 }

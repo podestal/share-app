@@ -311,3 +311,16 @@
 .access-container-signup {
     height: 80%;
 }
+
+/* Purchase */
+
+.purchase-container {
+    display: flex;
+    width: 70%;
+    margin: 3rem auto;
+    justify-content: space-between;
+}
+
+.purchase-container .purchase-container-options {
+    
+} 
