@@ -9,13 +9,12 @@ const SubscriptionItem = ({ subscription }) => {
         'N': 90,
     }
 
-    const addDays = period[subscription?.period]
+    // const addDays = period[subscription?.period]
     
-    const dueDate = moment(subscription?.subscribed_at).add(addDays, 'days').calendar()
+    // const dueDate = moment(subscription?.subscribed_at).add(addDays, 'days').calendar()
 
   return (
     <div className='service-container subscription-container'>
-            {console.log('days', addDays)}
         <div className='subscription-header'>
             <h2 className={`subscription-platform subscription-platform-${(subscription.service.platform).toLowerCase()}`}>{subscription.service.platform}</h2>
             <button>Renovar</button>
@@ -24,8 +23,8 @@ const SubscriptionItem = ({ subscription }) => {
             <div className='subscription-details'>
                 <p>Periodo: {period[subscription.period]} días</p>
                 <p>Usuario: {subscription.username}</p>
-                <p>Contraseña: </p>
-                <p>Fecha de vencimiento: {dueDate}</p>
+                <p>Contraseña: {subscription.password}</p>
+                <p>Fecha de vencimiento: {subscription.due_date}</p>
             </div>
             <dir className='subscription-features'>
                 <ul>

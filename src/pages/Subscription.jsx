@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import useUser from "../hooks/useUser"
 import SubscriptionItem from "../components/SubscriptionItem"
-import useCustomerScreen from "../hooks/useCustomerScreen"
 import { useMutation } from "@tanstack/react-query"
 import { customerScreen } from "../api/api"
 
@@ -24,10 +23,6 @@ const Subscription = () => {
     mutate({ id: user?.customerId, access: user?.accessToken})
   }, [user])
 
-  // if (isLoading) return <p>Loading ...</p>
-
-  // if (isError) {console.log(error)}
-
   return (
     <div className="subscriptions-container">
         {subscriptions?.length > 0
@@ -42,8 +37,6 @@ const Subscription = () => {
         </>
         :
         <p>You do not have any subscriptions yet</p>}
-        {/* {console.log('user from subscription', user)}
-        subscriptions */}
         
     </div>
   )

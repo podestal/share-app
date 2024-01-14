@@ -16,26 +16,29 @@ const customStyles = {
 const Purchase = ({ screen }) => {
 
   const options = [
-    {value: 'T', label: 'Tres Meses', price: (screen?.service.price).toFixed(2)},
-    {value: 'S', label: 'Seis Meses', price: (screen?.service.price * 0.95).toFixed(2)},
-    {value: 'N', label: 'Nueve Meses', price: (screen?.service.price * 0.90).toFixed(2)},
+    {value: 'T', label: 'Tres Meses', price: (screen?.service.price).toFixed(2), days: 30},
+    {value: 'S', label: 'Seis Meses', price: (screen?.service.price * 0.95).toFixed(2), days: 60},
+    {value: 'N', label: 'Nueve Meses', price: (screen?.service.price * 0.90).toFixed(2), days: 90},
   ]
 
   const [price, setPrice] = useState(screen?.service.price.toFixed(2))
   const {user} = useUser()
   const [period, setPeriod] = useState("")
+  const [days, setDays] = useState("")
   const {mutate} = usePurchase()
   
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(screen.id)
+    const subscribed_at = moment().format('YYYY-MM-DD')
+    const due_date = moment(moment(subscribed_at).add(days, 'days').calendar()).format('YYYY-MM-DD')
 
     mutate({ id: screen.id, updates: {
       available: false, 
       period, 
       customer: user.customerId,
-      subscribed_at:moment().format('YYYY-MM-DD'),
+      subscribed_at,
+      due_date,
     }})
   }
 
@@ -49,6 +52,7 @@ const Purchase = ({ screen }) => {
               options={options}
               styles={customStyles}
               onChange={option => {
+                setDays(option.days)
                 setPrice(option.price)
                 setPeriod(option.value)}}
             />

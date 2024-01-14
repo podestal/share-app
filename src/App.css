@@ -60,6 +60,24 @@
     border-bottom: 1px solid #0061ff;
 }
 
+/* Hero */
+
+.hero {
+    background: url("./assets/services-pics/her3.jpg") no-repeat center center/cover;
+    height: 90vh;
+    position: relative;
+    text-align: center;
+}
+
+.hero .search-form{
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 /* Services */
 
 .services-container {

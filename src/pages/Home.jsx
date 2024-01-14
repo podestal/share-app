@@ -14,7 +14,12 @@ const Home = () => {
 
   return (
     <>  
-        {console.log('user from home', user)}
+        <div className='hero'>
+          <form className='search-form'>
+            <input type="text" />
+            <button className='btn btn-primary'>Buscar</button>
+          </form>
+        </div>
         <Services />
     </>
   )
