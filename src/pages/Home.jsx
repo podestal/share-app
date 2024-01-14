@@ -15,10 +15,7 @@ const Home = () => {
   return (
     <>  
         <div className='hero'>
-          <form className='search-form'>
-            <input type="text" />
-            <button className='btn btn-primary'>Buscar</button>
-          </form>
+          <h1>Paga menos y disfruta de la mejor calidad en streaming</h1>
         </div>
         <Services />
     </>

@@ -45,8 +45,9 @@ const Purchase = ({ screen }) => {
   return (
     <div className='purchase-container'>
         <div className='purchase-options-container'>
-          <h3>Price: {price}</h3>
-          <p>Period:</p>
+          <h2>Price</h2>
+          <p>$.{price} o S/.{(price*3.8).toFixed(2)} al mes</p>
+          <h2>Periodo</h2>
           <form onSubmit={handleSubmit}>
             <Select 
               options={options}
