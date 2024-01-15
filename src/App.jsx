@@ -10,7 +10,7 @@ import AuthRequired from "./components/AuthRequired"
 import About from "./pages/About"
 import Subscription from "./pages/Subscription"
 import Service from "./pages/Service"
-
+import Footer from './components/Footer'
 
 const App = () => {
 
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="main">
       <div className="main-body">
-         <Header />
+        <Header />
         <Routes>
           <Route element={<PersistLogin />}>
             <Route element={<AuthRequired />}>
@@ -34,6 +34,7 @@ const App = () => {
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />
         </Routes>
+        <Footer />
       </div>
     </div>
   )

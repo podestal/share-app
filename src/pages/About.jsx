@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div>
+    <div className='about-container'>
       <h2>Acerca de Nosotros</h2>
       <p>MyShare.com es un mercado virtual que te permite conectar con dueños de cuentas de streaming, unirte y ahorrar
         dinero. Nuestra organización se basa en la economía de compartir algo así como un Uber para cuentas de streaming.

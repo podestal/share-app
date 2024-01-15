@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import Select from 'react-select'
 import usePurchase from '../hooks/usePurchase'
 import useUser from '../hooks/useUser'
@@ -21,11 +22,16 @@ const Purchase = ({ screen }) => {
     {value: 'N', label: 'Nueve Meses', price: (screen?.service.price * 0.90).toFixed(2), days: 90},
   ]
 
+  const queryClient = useQueryClient()
   const [price, setPrice] = useState(screen?.service.price.toFixed(2))
   const {user} = useUser()
   const [period, setPeriod] = useState("")
   const [days, setDays] = useState("")
   const {mutate} = usePurchase()
+
+  useEffect(() => {
+    queryClient.invalidateQueries(['services'])
+  }, [])
   
 
   const handleSubmit = e => {
@@ -46,7 +52,7 @@ const Purchase = ({ screen }) => {
     <div className='purchase-container'>
         <div className='purchase-options-container'>
           <h2>Price</h2>
-          <p>$.{price} o S/.{(price*3.8).toFixed(2)} al mes</p>
+          <p>$.{price} o S/.{(price*3.7).toFixed(2)} al mes</p>
           <h2>Periodo</h2>
           <form onSubmit={handleSubmit}>
             <Select 
