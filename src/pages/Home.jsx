@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useUser from '../hooks/useUser'
 import useServices from '../hooks/useServices'
 import Services from '../components/Services'
+import MoviesFinder from '../components/MoviesFinder'
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
     <>  
         <div className='hero'>
           <h1>Paga menos y disfruta de la mejor calidad en streaming</h1>
+          <MoviesFinder />  
         </div>
         <Services />
     </>
