@@ -14,7 +14,7 @@ const Service = () => {
     if (isError) return <p>{error.message}</p>
 
   return (
-    <div>
+    <div className='main-body'>
         {console.log('screen', screen.data)}
         <Purchase 
             screen={screen.data[0]}

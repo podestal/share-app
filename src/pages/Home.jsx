@@ -16,8 +16,10 @@ const Home = () => {
   return (
     <>  
         <div className='hero'>
-          <h1>Paga menos y disfruta de la mejor calidad en streaming</h1>
-          <MoviesFinder />  
+          <div className='main-body'>
+            <h1>Paga menos y disfruta de la mejor calidad en streaming</h1>
+            <MoviesFinder />  
+          </div>
         </div>
         <Services />
     </>

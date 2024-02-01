@@ -24,7 +24,8 @@ const Subscription = () => {
   }, [user])
 
   return (
-    <div className="subscriptions-container">
+    <div className="main-body">
+      <div className="subscriptions-container">
         {subscriptions?.length > 0
         ? 
         <>
@@ -37,7 +38,7 @@ const Subscription = () => {
         </>
         :
         <p>You do not have any subscriptions yet</p>}
-        
+      </div>
     </div>
   )
 }

@@ -9,5 +9,16 @@
   <body style="background-color: #000;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      document.addEventListener('scroll', () => {
+        const header = document.getElementById('header')
+        if (window.scrollY > 0) {
+          header.classList.add('scrolled-header')
+          header.classList.remove('unscrolled-header')
+        } else {
+          header.classList.add('unscrolled-header')
+        }
+      })
+    </script>
   </body>
 </html>

@@ -17,7 +17,6 @@ const App = () => {
 
   return (
     <div className="main">
-      <div className="main-body">
         <Header />
         <Routes>
           <Route element={<PersistLogin />}>
@@ -34,7 +33,6 @@ const App = () => {
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />
         </Routes>
-      </div>
       <Footer /> 
     </div>
     

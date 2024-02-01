@@ -6,7 +6,7 @@ const Profile = () => {
   const {user} = useUser()
 
   return (
-    <div>
+    <div className='main-body'>
       <h2>{user?.username}</h2>
       <p>{user?.active}</p>
     </div>

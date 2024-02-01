@@ -35,38 +35,40 @@ const Signup = () => {
     }, [user])
 
   return (
-    <div className='access-container access-container-signup'>
-        <h2 className='access-container-title'>Regístrate</h2>
-        {err && <p className='access-container-error'>{err}</p>}
-        <form onSubmit={handleSubmit}>
-            <input 
-                type='email'
-                placeholder='Correo Electrónico'
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-            />
-            <input 
-                type='text'
-                placeholder='Usuario'
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-            />
-            <input 
-                type='password'
-                placeholder='Contraseña'
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-            />
-            <input 
-                type='password'
-                placeholder='Contraseña otra vez'
-                value={pwd}
-                onChange={e => setPwd(e.target.value)}
-            />
-            <button className='btn btn-primary' type='submit'>Regístrate</button>
-        </form>
-        <p>Ya tienes una cuenta? <Link to={'/login'}>Inicia sesión</Link></p>
-    </div>
+        <div className='main-body'>
+            <div className='access-container access-container-signup'>
+                <h2 className='access-container-title'>Regístrate</h2>
+                {err && <p className='access-container-error'>{err}</p>}
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        type='email'
+                        placeholder='Correo Electrónico'
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <input 
+                        type='text'
+                        placeholder='Usuario'
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                    />
+                    <input 
+                        type='password'
+                        placeholder='Contraseña'
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <input 
+                        type='password'
+                        placeholder='Contraseña otra vez'
+                        value={pwd}
+                        onChange={e => setPwd(e.target.value)}
+                    />
+                    <button className='btn btn-primary' type='submit'>Regístrate</button>
+                </form>
+                <p>Ya tienes una cuenta? <Link to={'/login'}>Inicia sesión</Link></p>
+            </div>
+        </div>
   )
 }
 
