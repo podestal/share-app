@@ -4,33 +4,38 @@ import { moviesData } from '../../movies/moviesData'
 const MoviesFinder = () => {
 
     const [title, setTitle] = useState("")
-
-    useEffect(() => {
-      console.log(moviesData)
-    }, [title])
+    const [foundTitles, setFoundTitles] = useState([])
 
     const handleSearch = e => {
         e.preventDefault()
         const lowerTitle = title.toLocaleLowerCase()
-        moviesData.filter(movie => {
+        const myTitles = moviesData.filter(movie => {
           if (movie.original_title.toLocaleLowerCase().includes(lowerTitle)) {
-            console.log(movie.original_title)
+            return movie.original_title
           }
           else if (movie.title_two.toLocaleLowerCase().includes(lowerTitle)) {
-            console.log(movie.title_two)
+            return movie.title_two
           }
           else if (movie.title_three.toLocaleLowerCase().includes(lowerTitle)) {
-            console.log(movie.title_three)
+            return movie.title_three
           }
           else if (movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
-            console.log(movie.title_four)
+            return movie.title_four
           }
         })
+
+        setFoundTitles(myTitles)
         setTitle('')
     }
 
   return (
     <form className='movies-finder-form' onSubmit={handleSearch}>
+        {foundTitles && foundTitles.map(title => (
+            <div key={title.original_title}>
+              <h3>{title.original_title}</h3>
+              <p>Streaming in {title.streaming[0]}</p>
+            </div>
+          ))}
         <input 
             type="text" 
             placeholder='Titulo de la película'
