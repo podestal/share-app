@@ -468,6 +468,35 @@ transition: 0.4s ease-in-out;
     align-items: center;
 }
 
+.logos-container {
+    display: flex;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.netflix-logo {
+    background: url("./assets/services-pics/netflix-logo.png") no-repeat center center/cover;
+}
+
+.hbo-max-logo {
+    background: url("./assets/services-pics/hbo-max-logo.png") no-repeat center center/cover;
+}
+
+.disney-logo {
+    background: url("./assets/services-pics/disney-logo.png") no-repeat center center/cover;
+}
+
+.amazon-prime {
+    background: url("./assets/services-pics/amazon-prime-video-logo.png") no-repeat center center/cover;
+}
+
+.paramount-logo {
+    background: url("./assets/services-pics/paramount-logo.png") no-repeat center center/cover;
+}
+
 .footer p {
     font-size: 1.2rem;
 }

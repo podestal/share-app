@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { moviesData } from '../../movies/moviesData'
+import useMovies from '../hooks/useMovies'
+import { useNavigate } from 'react-router-dom'
 
 const MoviesFinder = () => {
 
     const [title, setTitle] = useState("")
-    const [foundTitles, setFoundTitles] = useState([])
+    const [notFoundMessage, setNotFoundMessage] = useState("")
+    const {movies, setMovies} = useMovies()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      console.log(moviesData)
+    }, [])
 
     const handleSearch = e => {
         e.preventDefault()
+        setNotFoundMessage("")
         const lowerTitle = title.toLocaleLowerCase()
         const myTitles = moviesData.filter(movie => {
           if (movie.original_title.toLocaleLowerCase().includes(lowerTitle)) {
@@ -23,19 +32,19 @@ const MoviesFinder = () => {
             return movie.title_four
           }
         })
-
-        setFoundTitles(myTitles)
+        if (myTitles.length > 1) {
+          setMovies(myTitles)
+          navigate('/movies')
+        } else {
+          setMovies([])
+          setNotFoundMessage("Lo sentimos pero, no pudimos encontrar el título que está buscando")
+        }
         setTitle('')
     }
 
   return (
     <form className='movies-finder-form' onSubmit={handleSearch}>
-        {foundTitles && foundTitles.map(title => (
-            <div key={title.original_title}>
-              <h3>{title.original_title}</h3>
-              <p>Streaming in {title.streaming[0]}</p>
-            </div>
-          ))}
+        {notFoundMessage && <p>{notFoundMessage}</p>}
         <input 
             type="text" 
             placeholder='Titulo de la película'

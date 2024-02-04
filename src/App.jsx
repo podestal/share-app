@@ -11,6 +11,7 @@ import About from "./pages/About"
 import Subscription from "./pages/Subscription"
 import Service from "./pages/Service"
 import Footer from './components/Footer'
+import MoviesPage from './pages/MoviesPage'
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />
+          <Route path="movies" element={<MoviesPage />} />
         </Routes>
       <Footer /> 
     </div>
