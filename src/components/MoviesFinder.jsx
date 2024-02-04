@@ -1,12 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { moviesData } from '../../movies/moviesData'
 
 const MoviesFinder = () => {
 
     const [title, setTitle] = useState("")
 
+    useEffect(() => {
+      console.log(moviesData)
+    }, [title])
+
     const handleSearch = e => {
         e.preventDefault()
-        alert(title)
+        const lowerTitle = title.toLocaleLowerCase()
+        moviesData.filter(movie => {
+          if (movie.original_title.toLocaleLowerCase().includes(lowerTitle)) {
+            console.log(movie.original_title)
+          }
+          else if (movie.title_two.toLocaleLowerCase().includes(lowerTitle)) {
+            console.log(movie.title_two)
+          }
+          else if (movie.title_three.toLocaleLowerCase().includes(lowerTitle)) {
+            console.log(movie.title_three)
+          }
+          else if (movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
+            console.log(movie.title_four)
+          }
+        })
         setTitle('')
     }
 
