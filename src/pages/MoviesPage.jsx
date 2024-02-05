@@ -15,15 +15,20 @@ const MoviesPage = () => {
 
   return (
     <div className='main-body'>
-        {movies && movies.map(title => (
-            <div key={title.original_title}>
+      {movies && movies.map(title => (
+          <div key={title.original_title} className='title-container'>
+            <div className='title-data'>
               <h3>{title.original_title}</h3>
               <p>Streaming at:</p>
               <div className='logos-container'>
                 {title.streaming.map(stream => <Link to={`/service/${purchaseOptions[stream]}`}><div className={`logo ${stream.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>)}
               </div>
-
             </div>
+            <div className='title-img'>
+              <img src={title.poster.split(',')[0]} alt={title.original_title} />
+              {console.log(title.poster)}
+            </div>
+          </div>
         ))}
     </div>
   )
