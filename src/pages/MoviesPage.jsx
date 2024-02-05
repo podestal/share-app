@@ -25,7 +25,7 @@ const MoviesPage = () => {
               </div>
             </div>
             <div className='title-img'>
-              <img src={title.poster.split(',')[0]} alt={title.original_title} />
+              <img src={title.poster} alt={title.original_title} />
               {console.log(title.poster)}
             </div>
           </div>
