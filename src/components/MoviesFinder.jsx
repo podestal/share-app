@@ -19,17 +19,23 @@ const MoviesFinder = () => {
         setNotFoundMessage("")
         const lowerTitle = title.toLocaleLowerCase()
         const myTitles = moviesData.filter(movie => {
-          if (movie.original_title.toLocaleLowerCase().includes(lowerTitle)) {
+          // if (movie.original_title.toLocaleLowerCase().includes(lowerTitle)) {
+          //   return movie.original_title
+          // }
+          // else if (movie.title_two.toLocaleLowerCase().includes(lowerTitle)) {
+          //   return movie.title_two
+          // }
+          // else if (movie.title_three.toLocaleLowerCase().includes(lowerTitle)) {
+          //   return movie.title_three
+          // }
+          // else if (movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
+          //   return movie.title_four
+          // }
+          if (movie.original_title.toLocaleLowerCase().includes(lowerTitle) ||
+              movie.title_two.toLocaleLowerCase().includes(lowerTitle)      ||
+              movie.title_three.toLocaleLowerCase().includes(lowerTitle)    ||
+              movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
             return movie.original_title
-          }
-          else if (movie.title_two.toLocaleLowerCase().includes(lowerTitle)) {
-            return movie.title_two
-          }
-          else if (movie.title_three.toLocaleLowerCase().includes(lowerTitle)) {
-            return movie.title_three
-          }
-          else if (movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
-            return movie.title_four
           }
         })
         if (myTitles.length > 1) {
