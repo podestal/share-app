@@ -1,10 +1,12 @@
 import React from 'react'
 import useMovies from '../hooks/useMovies'
 import { Link } from 'react-router-dom'
+import useServicesContext from '../hooks/useServicesContext'
 
 const MoviesPage = () => {
 
     const {movies} = useMovies()
+    const {services} = useServicesContext()
     const purchaseOptions = {
         'HBO Max': 8,
         'Paramount': 4,
@@ -19,14 +21,15 @@ const MoviesPage = () => {
           <div key={title.original_title} className='title-container'>
             <div className='title-data'>
               <h3>{title.original_title}</h3>
-              <p>Streaming at:</p>
+              <p>Disponible en:</p>
               <div className='logos-container'>
-                {title.streaming.map(stream => (
-                  <div className='logo-container'>
-                    <Link to={`/service/${purchaseOptions[stream]}`}><div className={`logo ${stream.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
-                    <span className='logo-text'>10 Soles</span>
-                    <span className='logo-text'>Al mes</span>
-                  </div>))}
+                {services.map(service =>  title.streaming.indexOf(service.comercial_name) != -1 &&                
+                    <div className='logo-container'>
+                      <Link to={`/service/${service.id}`}><div className={`logo ${service.comercial_name.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
+                      <span className='logo-text'>10 Soles</span>
+                      <span className='logo-text'>Al mes</span>
+                    </div>
+                )}
               </div>
             </div>
             <div className='title-img'>

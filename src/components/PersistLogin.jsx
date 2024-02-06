@@ -17,16 +17,17 @@ const PersistLogin = () => {
     const {mutate: refresh} = useRefresh(user, setUser, setAccess)
 
     useEffect(() => {
-        const exp = jwtDecode(access).exp
-        const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
-        if (isExpired) {
-            refresh({ refresh: refreshToken })
+        if (access) {
+            const exp = jwtDecode(access).exp
+            const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
+            if (isExpired) {
+                refresh({ refresh: refreshToken })
+            }
+            if (!user?.accessToken) {
+                setUser({ ...user, accessToken: access })
+            }
+            getCustomer({ access })
         }
-        if (!user?.accessToken) {
-            setUser({ ...user, accessToken: access })
-        }
-        getCustomer({ access })
-        console.log(moment().format('YYYY MM DD'));
     }, [])
 
   return (
