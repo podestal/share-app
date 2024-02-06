@@ -19,26 +19,18 @@ const MoviesFinder = () => {
         setNotFoundMessage("")
         const lowerTitle = title.toLocaleLowerCase()
         const myTitles = moviesData.filter(movie => {
-          // if (movie.original_title.toLocaleLowerCase().includes(lowerTitle)) {
-          //   return movie.original_title
-          // }
-          // else if (movie.title_two.toLocaleLowerCase().includes(lowerTitle)) {
-          //   return movie.title_two
-          // }
-          // else if (movie.title_three.toLocaleLowerCase().includes(lowerTitle)) {
-          //   return movie.title_three
-          // }
-          // else if (movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
-          //   return movie.title_four
-          // }
-          if (movie.original_title.toLocaleLowerCase().includes(lowerTitle) ||
-              movie.title_two.toLocaleLowerCase().includes(lowerTitle)      ||
-              movie.title_three.toLocaleLowerCase().includes(lowerTitle)    ||
-              movie.title_four.toLocaleLowerCase().includes(lowerTitle)) {
-            return movie.original_title
+          if (movie.original_title.includes(lowerTitle)) {
+            return movie
           }
+           else if (movie.title_two.includes(lowerTitle)) {
+            return movie
+          } else if (movie.title_three.includes(lowerTitle)){
+            return movie
+          } else if (movie.title_four.includes(lowerTitle)){
+            return movie
+          } 
         })
-        if (myTitles.length > 1) {
+        if (myTitles.length > 0) {
           setMovies(myTitles)
           navigate('/movies')
         } else {

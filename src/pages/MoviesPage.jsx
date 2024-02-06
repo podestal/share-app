@@ -25,9 +25,7 @@ const MoviesPage = () => {
               </div>
             </div>
             <div className='title-img'>
-              {/* {title.poster[0] == 'None' && <img src={title.poster[1]} alt={title.original_title} />} */}
               <img src={title.poster[0] == 'None' ? title.poster[1] : title.poster[0]} alt={title.original_title} />
-              {console.log(title.poster)}
             </div>
           </div>
         ))}
