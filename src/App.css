@@ -103,6 +103,8 @@ transition: 0.4s ease-in-out;
         no-repeat center center/cover;
     height: 100vh;
     position: relative;
+    top: 0;
+    left: 0;
     text-align: center;
 }
 
@@ -459,7 +461,7 @@ transition: 0.4s ease-in-out;
 
 /* Footer */
 
-.footer {
+/* .footer {
     margin-top: 4rem;
     height: 3.5rem;
     width: 100%;
@@ -468,7 +470,7 @@ transition: 0.4s ease-in-out;
     align-items: center;
     position: absolute;
     bottom: 0;
-}
+} */
 
 .logos-container {
     display: flex;
@@ -481,13 +483,13 @@ transition: 0.4s ease-in-out;
 
 .logo-container .logo-text {
     font-size: 0.7rem;
-    margin-top: 0.5rem;
 }
 
 .logo {
     width: 50px;
     height: 50px;
     margin-right: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .netflix-logo {

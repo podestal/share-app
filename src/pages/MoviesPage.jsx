@@ -24,7 +24,8 @@ const MoviesPage = () => {
                 {title.streaming.map(stream => (
                   <div className='logo-container'>
                     <Link to={`/service/${purchaseOptions[stream]}`}><div className={`logo ${stream.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
-                    <p className='logo-text'>10 PEN</p>
+                    <span className='logo-text'>10 Soles</span>
+                    <span className='logo-text'>Al mes</span>
                   </div>))}
               </div>
             </div>
