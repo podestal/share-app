@@ -21,7 +21,11 @@ const MoviesPage = () => {
               <h3>{title.original_title}</h3>
               <p>Streaming at:</p>
               <div className='logos-container'>
-                {title.streaming.map(stream => <Link to={`/service/${purchaseOptions[stream]}`}><div className={`logo ${stream.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>)}
+                {title.streaming.map(stream => (
+                  <div className='logo-container'>
+                    <Link to={`/service/${purchaseOptions[stream]}`}><div className={`logo ${stream.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
+                    <p className='logo-text'>10 PEN</p>
+                  </div>))}
               </div>
             </div>
             <div className='title-img'>
