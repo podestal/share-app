@@ -31,14 +31,11 @@ const Purchase = ({ screen }) => {
   const [period, setPeriod] = useState("")
   const [days, setDays] = useState("")
   const {mutate} = usePurchase()
-
-  useEffect(() => {
-    queryClient.invalidateQueries(['services'])
-  }, [])
+  const [order, setOrder] = useState({})
   
   const {mutate: createOrderMutation} = useMutation({
     mutationFn: data => createOrder(data),
-    onSuccess: res => console.log(res)
+    onSuccess: res => setOrder(res.data)
   })
 
   const handleSubmit = e => {
@@ -59,7 +56,6 @@ const Purchase = ({ screen }) => {
 
   return (
     <div className='purchase-container'>
-        {console.log(screen.service.id)}
         <div className='purchase-options-container'>
           <h2>Price</h2>
           <p>$.{price} o S/.{(price*3.7).toFixed(2)} al mes</p>
@@ -88,7 +84,7 @@ const Purchase = ({ screen }) => {
           />
         </div>
       <YapeModal 
-
+        order={order}
       />  
     </div>
   )

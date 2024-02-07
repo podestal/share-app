@@ -25,8 +25,6 @@ export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{
     headers: { Authorization: `JWT ${data.access}` }
 })
 
-export const createOrder = async data => baseAxios.post(`${ORDERS}`, data.order)
-
 export const services = async data => baseAxios.get(SERVICES)
     
 export const screen = async data => baseAxios.get(`${SCREEN}${data.id}`)
@@ -38,3 +36,9 @@ export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?custo
 })
 
 export const features = async data => baseAxios.get(FEATURES)
+
+export const createOrder = async data => baseAxios.post(`${ORDERS}`, data.order)
+
+export const createOrderReceipt = async data => baseAxios.post(`${ORDERS}${data.orderId}/receipts/`, data.image)
+                                                .then(res => console.log(res))
+                                                .catch(err => console.log(err))

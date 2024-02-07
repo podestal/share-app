@@ -1,12 +1,22 @@
 import React, {useState} from 'react'
+import { createOrderReceipt } from '../api/api'
+import { useMutation } from '@tanstack/react-query'
 
-const ImageForm = () => {
+const ImageForm = ({ order }) => {
+
+    const {mutate: createOrderReceiptMutation} = useMutation({
+        mutationFn: data => createOrderReceipt(data),
+        onSuccess: res => console.log(res)
+    })
 
     const [img, setImg] = useState("")
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(img)
+        const formData = new FormData()
+        formData.append('image', img)
+        console.log(formData);
+        createOrderReceiptMutation({ orderId:order.id, image:formData })
     }
 
   return (
