@@ -42,3 +42,5 @@ export const createOrder = async data => baseAxios.post(`${ORDERS}`, data.order)
 export const createOrderReceipt = async data => baseAxios.post(`${ORDERS}${data.orderId}/receipts/`, data.image)
                                                 .then(res => console.log(res))
                                                 .catch(err => console.log(err))
+
+export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.orderId}`)
