@@ -23,7 +23,7 @@ const Services = () => {
     
     return (
         <div className='services-container'>
-            {services
+            {services && services
                 .filter(service => service.screens > 0)
                 .map(service => (
                     <Service 

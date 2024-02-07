@@ -5,6 +5,9 @@ import usePurchase from '../hooks/usePurchase'
 import useUser from '../hooks/useUser'
 import moment from 'moment'
 import Features from './Features'
+import YapeModal from './YapeModal'
+import { createOrder } from '../api/api'
+import { useMutation } from '@tanstack/react-query'
 
 const customStyles = {
   option: (provided, state) => ({
@@ -33,23 +36,30 @@ const Purchase = ({ screen }) => {
     queryClient.invalidateQueries(['services'])
   }, [])
   
+  const {mutate: createOrderMutation} = useMutation({
+    mutationFn: data => createOrder(data),
+    onSuccess: res => console.log(res)
+  })
 
   const handleSubmit = e => {
     e.preventDefault()
-    const subscribed_at = moment().format('YYYY-MM-DD')
-    const due_date = moment(moment(subscribed_at).add(days, 'days').calendar()).format('YYYY-MM-DD')
+    createOrderMutation({ order: {service: screen.service.id} })
+    // const subscribed_at = moment().format('YYYY-MM-DD')
+    // const due_date = moment(moment(subscribed_at).add(days, 'days').calendar()).format('YYYY-MM-DD')
 
-    mutate({ id: screen.id, updates: {
-      available: false, 
-      period, 
-      customer: user.customerId,
-      subscribed_at,
-      due_date,
-    }})
+    // mutate({ id: screen.id, updates: {
+    //   available: false, 
+    //   period, 
+    //   customer: user.customerId,
+    //   subscribed_at,
+    //   due_date,
+    // }})
+
   }
 
   return (
     <div className='purchase-container'>
+        {console.log(screen.service.id)}
         <div className='purchase-options-container'>
           <h2>Price</h2>
           <p>$.{price} o S/.{(price*3.7).toFixed(2)} al mes</p>
@@ -77,6 +87,9 @@ const Purchase = ({ screen }) => {
             serviceTitle={screen.service.platform}
           />
         </div>
+      <YapeModal 
+
+      />  
     </div>
   )
 }

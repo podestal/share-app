@@ -8,16 +8,34 @@
 /* main */
 
 .main {
-    height: 100vh;
+    /* height: 100vh; */
     color: #f5f3f4;
     display: flex;
     flex-direction: column;
 }
 
 .main-body {
-    margin-top: 6rem;
+    margin-top: 7rem;
     height: 100vh;
 }
+
+/* button {
+    font-weight: bold; 
+    background-color: black;
+    border-image: linear-gradient(
+        to right, #07c8f9, #0d41e1
+    );
+    border-image-slice: 1;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #07c8f9, #0d41e1);
+    border-image: none;
+    color: #fff;
+    border: none;
+} */
 /* 
 .main::after {
     content: '';
@@ -209,19 +227,7 @@ transition: 0.4s ease-in-out;
 } */
 
 .service-container button  {
-    /* margin: auto; */
     margin: 15px;
-    font-weight: bold; 
-    background-color: black;
-    border-image: linear-gradient(
-        to right, #151515, #38ef7d
-    );
-    border-image-slice: 1;
-}
-
-.service-container button:hover {
-    background-color: #38ef7d;
-    color: #000;
 }
 
 .service-container-show {
@@ -522,6 +528,43 @@ transition: 0.4s ease-in-out;
 
 .title-container .title-img {
     margin-left: 1rem;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 60%;
+    width: 40%;
+}
+
+.modal-container .modal-img {
+    background: url("./assets/services-pics/yape-qr.jpeg") no-repeat center center/cover;
+    width: 250px;
+    height: 350px;
+}
+
+.modal-container p {
+    font-size: 1.2rem;
+    margin: 1.2rem;
+}
+
+.img-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.img-form input,
+.img-form button {
+    margin: 1rem;
+}
+
+.input-file {
+    display: none;
 }
 
 .footer p {
