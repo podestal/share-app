@@ -5,7 +5,7 @@ const Home = () => {
 
   return (
     <>  
-        <div className='hero'>
+        <div className='hero' id='movies_finder'>
           <div className='main-body'>
             <h1>Paga menos y disfruta de la mejor calidad en streaming</h1>
             <MoviesFinder />  

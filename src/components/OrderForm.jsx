@@ -3,11 +3,13 @@ import { createOrderReceipt, updateOrder, updateScreen } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
 import useUser from '../hooks/useUser'
 import moment from 'moment'
+import { useNavigate } from 'react-router-dom'
 
 const OrderForm = ({ order, screenId, days }) => {
 
     const {user} = useUser()
     const [errorMsg, setErrorMsg] = useState("")
+    const navigate = useNavigate()
 
     const {mutate: createOrderReceiptMutation} = useMutation({
         mutationFn: data => createOrderReceipt(data),
@@ -48,6 +50,8 @@ const OrderForm = ({ order, screenId, days }) => {
           subscribed_at,
           due_date,
         }})
+        // Add a spiner that verifies the payment made
+        navigate('/subscription')
     }
 
   return (

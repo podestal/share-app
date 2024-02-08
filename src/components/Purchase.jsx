@@ -31,6 +31,8 @@ const Purchase = ({ screen }) => {
   const [days, setDays] = useState("")
   const {mutate} = usePurchase()
   const [order, setOrder] = useState({})
+  const [modal, setModal] = useState(false)
+  const [totalPrice, setTotalPrice] = useState(0)
   
   const {mutate: createOrderMutation} = useMutation({
     mutationFn: data => createOrder(data),
@@ -44,6 +46,7 @@ const Purchase = ({ screen }) => {
     if (period == "") {
       return setErrorMsg("Selecciona un periodo")
     }
+    setModal(true)
     createOrderMutation({ access: user.accessToken, order: {service: screen.service.id, period} })
   }
 
@@ -60,6 +63,7 @@ const Purchase = ({ screen }) => {
               options={options}
               styles={customStyles}
               onChange={option => {
+                setTotalPrice(((option.price*3.7) * (option.days / 30)).toFixed(2))
                 setDays(option.days)
                 setPrice(option.price)
                 setPeriod(option.value)}}
@@ -78,11 +82,13 @@ const Purchase = ({ screen }) => {
             serviceTitle={screen.service.platform}
           />
         </div>
-      <YapeModal 
+      {modal && <YapeModal 
         order={order}
         screenId={screen.id}
         days={days}
-      />  
+        setModal={setModal}
+        totalPrice={totalPrice}
+      />}  
     </div>
   )
 }
