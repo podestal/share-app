@@ -6,7 +6,6 @@ import useRefresh from '../hooks/useRefresh'
 import { jwtDecode } from "jwt-decode";
 import { Navigate } from 'react-router-dom'
 import dayjs from "dayjs";
-import moment from 'moment'
 
 const PersistLogin = () => {
 
@@ -20,11 +19,13 @@ const PersistLogin = () => {
         if (access) {
             const exp = jwtDecode(access).exp
             const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
-            if (isExpired) {
-                refresh({ refresh: refreshToken })
-            }
-            if (!user?.accessToken) {
+            if (!isExpired) {
+                console.log('token expired')
                 setUser({ ...user, accessToken: access })
+            }
+            else {
+                console.log('refreshing token')
+                refresh({ refresh: refreshToken })
             }
             getCustomer({ access })
         }

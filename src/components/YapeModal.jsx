@@ -1,9 +1,9 @@
 import React from 'react'
-import ImageForm from './ImageForm'
+import OrderForm from './OrderForm'
 import { deleteOrder } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
 
-const YapeModal = ({ order }) => {
+const YapeModal = ({ order, screenId, days }) => {
 
     const {mutate: deleteOrderMutation} = useMutation({
         mutationFn: data => deleteOrder(data),
@@ -20,8 +20,10 @@ const YapeModal = ({ order }) => {
         <div className='modal-container'>
             <div className='modal-img'></div>
             <p>908-525-5111</p>
-            <ImageForm 
+            <OrderForm 
                 order={order}
+                screenId={screenId}
+                days={days}
             />
             <button onClick={handelDeleteOrder} className='btn btn-danger'>Cancelar</button>
         </div>
