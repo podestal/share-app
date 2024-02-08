@@ -25,20 +25,21 @@ const Subscription = () => {
 
   return (
     <div className="main-body">
+      {subscriptions.length > 0 
+      ?
       <div className="subscriptions-container">
-        {subscriptions?.length > 0
-        ? 
-        <>
         {subscriptions.map(subscription => (
           <SubscriptionItem 
             key={subscription.id}
             subscription={subscription}
           />
         ))}
-        </>
-        :
-        <p>You do not have any subscriptions yet</p>}
       </div>
+      :
+      <div className="empty-body">
+        <h3>You do not have any subscriptions yet</h3>
+      </div>
+      }
     </div>
   )
 }

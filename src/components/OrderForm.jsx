@@ -4,11 +4,13 @@ import { useMutation } from '@tanstack/react-query'
 import useUser from '../hooks/useUser'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
+import { useQueryClient } from '@tanstack/react-query'
 
-const OrderForm = ({ order, screenId, days }) => {
+const OrderForm = ({ order, screenId, days, setLoading }) => {
 
     const {user} = useUser()
     const [errorMsg, setErrorMsg] = useState("")
+    const queryClient = useQueryClient()
     const navigate = useNavigate()
 
     const {mutate: createOrderReceiptMutation} = useMutation({
@@ -23,7 +25,7 @@ const OrderForm = ({ order, screenId, days }) => {
 
     const {mutate: updateScreenMutation} = useMutation({
         mutationFn: data => updateScreen(data),
-        onSuccess: res => console.log(res),
+        onSuccess: queryClient.invalidateQueries(['screen']),
         onError: err => console.log(err)
     })
 
@@ -50,8 +52,12 @@ const OrderForm = ({ order, screenId, days }) => {
           subscribed_at,
           due_date,
         }})
-        // Add a spiner that verifies the payment made
-        navigate('/subscription')
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+            navigate('/subscription')
+        }, 5000)
+        
     }
 
   return (

@@ -7,8 +7,10 @@ const Profile = () => {
 
   return (
     <div className='main-body'>
-      <h2>{user?.username}</h2>
-      <p>{user?.active}</p>
+      <div className='empty-body'>
+        <h2>{user?.username}</h2>
+        <p>{user?.active}</p>
+      </div>
     </div>
   )
 }
