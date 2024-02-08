@@ -1,14 +1,14 @@
-import React from 'react'
+import {useState} from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getOrders } from '../api/api'
-import useUser from '../hooks/useUser'
+import Orders from '../components/Orders'
 
 const OrdersPage = () => {
 
-    const {user} = useUser()
+    const [access, setAccess] = useState(JSON.parse(localStorage.getItem('access')) || "")
     const {data: orders, isLoading, isError, error} = useQuery({
         queryKey: ['orders'],
-        queryFn: () => getOrders({ access: user.accessToken })
+        queryFn: () => getOrders({ access })
     })
 
     if (isLoading) return <p>Loading ...</p>
@@ -17,7 +17,9 @@ const OrdersPage = () => {
 
   return (
     <div className='main-body'>
-        {console.log('from get orders', orders)}
+        <Orders 
+          orders={orders.data}
+        />
     </div>
   )
 }

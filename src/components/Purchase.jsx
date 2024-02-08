@@ -40,7 +40,7 @@ const Purchase = ({ screen }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    createOrderMutation({ access: user.accessToken, order: {service: screen.service.id} })
+    createOrderMutation({ access: user.accessToken, order: {service: screen.service.id, period} })
     // const subscribed_at = moment().format('YYYY-MM-DD')
     // const due_date = moment(moment(subscribed_at).add(days, 'days').calendar()).format('YYYY-MM-DD')
 
