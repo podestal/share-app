@@ -15,21 +15,22 @@ import MoviesPage from './pages/MoviesPage'
 
 const App = () => {
 
-
   return (
     <div className="main">
         <Header />
         <Routes>
-          <Route element={<PersistLogin />}>
+          <Route element={<PersistLogin />}>  
             <Route element={<AuthRequired />}>
-              {/* <Route path="home" element={<Home />} /> */}
+              <Route path="" element={<Home />}/>
               <Route path="about-us" element={<About />}/>
               <Route path="profile" element={<Profile />}/>
               <Route path="subscription" element={<Subscription />}/>
               <Route path="service/:id" element={<Service />}/>
             </Route>
           </Route>
-          <Route path="" element={<Home />}/>
+          <Route element={<PersistLogin />}>
+            <Route path="" element={<Home />}/>
+          </Route>
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />

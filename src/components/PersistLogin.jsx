@@ -28,13 +28,13 @@ const PersistLogin = () => {
             }
             getCustomer({ access })
         }
-    }, [])
+    }, [access])
 
   return (
-    <div>
+    <>
         {console.log('from persist login', user)}
         {access ? <Outlet /> : <Navigate to={'/login'}/>}
-    </div>
+    </>
   )
 }
 

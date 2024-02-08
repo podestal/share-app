@@ -5,6 +5,7 @@ const useCustomer = (user, setUser) => {
     return useMutation({
         mutationFn: (data) => getCustomer(data),
         onSuccess: res => {
+            console.log('from useCUstomer')
             setUser({ 
                 customerId: res.data.id, 
                 active: res.data.active,
