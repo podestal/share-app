@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import useUser from '../hooks/useUser'
-import useSignup from '../hooks/useSignup'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import { createCustomer, signup } from '../api/api'
 
 const Signup = () => {
 
     const {user, setUser} = useUser()
     const [username, setUsername] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [pwd, setPwd] = useState("")
     const [err, setErr] = useState("")
     const navigate = useNavigate()
 
-    const {mutate: signup} = useSignup(user, setUser, username, password)
+    const {mutate: createCustomerMutation} = useMutation({
+        mutationFn: data => createCustomer(data),
+        onSuccess: res => setUser({ ...user, customerId: res.data.id }),
+        onError: err => console.log(err)
+    })  
 
+    const {mutate: createUserMutation} = useMutation({
+        mutationFn: (data) => signup(data),
+        onSuccess: res => {
+            setUser({ ...res.data, active: false })
+            createCustomerMutation({ user: res.data.id })
+        },
+        onError: err => setErr(err.message),
+    })
 
     const handleSubmit = e => {
         setErr("")
         e.preventDefault()
         if (password === pwd) {
-            signup({ email, username, password })
+            createUserMutation({ email, username, password, first_name: firstName, last_name: lastName })
             navigate('/login')
         } else {
             setErr("Passwords must match")
         }
-
     }
-
-    useEffect(() => {
-        console.log("user", user)
-
-    }, [user])
 
   return (
         <div className='main-body'>
@@ -51,6 +60,18 @@ const Signup = () => {
                         placeholder='Usuario'
                         value={username}
                         onChange={e => setUsername(e.target.value)}
+                    />
+                    <input 
+                        type='text'
+                        placeholder='Nombre'
+                        value={firstName}
+                        onChange={e => setFirstName(e.target.value)}
+                    />
+                    <input 
+                        type='text'
+                        placeholder='Apellido'
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)}
                     />
                     <input 
                         type='password'

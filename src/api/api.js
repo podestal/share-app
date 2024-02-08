@@ -19,6 +19,8 @@ export const login = async data => baseAxios.post(LOGIN, data)
 
 export const signup = async data => baseAxios.post(SIGNUP, data)
 
+export const createCustomer = async data => baseAxios.post(CUSTOMER, data)
+
 export const refresh = async data => baseAxios.post(REFRESH, data)
 
 export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{
@@ -37,10 +39,19 @@ export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?custo
 
 export const features = async data => baseAxios.get(FEATURES)
 
-export const createOrder = async data => baseAxios.post(`${ORDERS}`, data.order)
+export const createOrder = async data => baseAxios.post(`${ORDERS}`, data.order, {
+    headers: { Authorization: `JWT ${data.access}`}
+})
 
-export const createOrderReceipt = async data => baseAxios.post(`${ORDERS}${data.orderId}/receipts/`, data.image)
-                                                .then(res => console.log(res))
-                                                .catch(err => console.log(err))
+export const createOrderReceipt = async data => baseAxios.post(`${ORDERS}${data.orderId}/receipts/`, data.image, {
+    headers: { Authorization: `JWT ${data.access}`}
+})
 
-export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.orderId}`)
+export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.orderId}` ,{
+    headers: { Authorization: `JWT ${data.access}`}
+})
+
+export const updateOrder = async data => baseAxios.patch(`${ORDERS}${data.orderId}/`, data.updates, {
+    headers: { Authorization: `JWT ${data.access}`}
+})
+           

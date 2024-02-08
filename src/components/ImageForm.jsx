@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
-import { createOrderReceipt } from '../api/api'
+import { createOrderReceipt, updateOrder } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
+import useUser from '../hooks/useUser'
 
 const ImageForm = ({ order }) => {
 
+    const {user} = useUser()
+
     const {mutate: createOrderReceiptMutation} = useMutation({
         mutationFn: data => createOrderReceipt(data),
+        onSuccess: res => console.log(res)
+    })
+
+    const {mutate: updateOrderMutation} = useMutation({
+        mutationFn: data => updateOrder(data),
         onSuccess: res => console.log(res)
     })
 
@@ -15,8 +23,8 @@ const ImageForm = ({ order }) => {
         e.preventDefault()
         const formData = new FormData()
         formData.append('image', img)
-        console.log(formData);
-        createOrderReceiptMutation({ orderId:order.id, image:formData })
+        createOrderReceiptMutation({ access: user.accessToken, orderId:order.id, image:formData })
+        updateOrderMutation({ access: user.accessToken, orderId:order.id, updates: {status: 'P'} })   
     }
 
   return (

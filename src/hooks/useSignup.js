@@ -4,11 +4,10 @@ import useLogin from "./useLogin"
 
 const useSignup = (user, setUser, username,  password) => {
 
-    const {mutate: login} = useLogin(user, setUser)
-
     return useMutation({
         mutationFn: (data) => signup(data),
         onSuccess: res => {
+            console.log(res.data);
             setUser({ ...res.data, active: false })
         },
         onError: err => setErr(err.message),
