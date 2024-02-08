@@ -39,6 +39,10 @@ export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?custo
 
 export const features = async data => baseAxios.get(FEATURES)
 
+export const getOrders = async data => baseAxios.get(ORDERS, {
+    headers: { Authorization: `JWT ${data.access}`}
+})
+
 export const createOrder = async data => baseAxios.post(`${ORDERS}`, data.order, {
     headers: { Authorization: `JWT ${data.access}`}
 })

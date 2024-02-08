@@ -9,7 +9,6 @@ const Header = () => {
   return (
     <div className='header' id='header'>
       <dir className='header-logo-container'>
-        {/* <Link to={user ? '/home' : '/'}><h1 className='header-logo'>MyShare</h1></Link> */}
         <Link to='/' ><h1 className='header-logo'>MyShare</h1></Link>
       </dir>
       
@@ -20,6 +19,7 @@ const Header = () => {
           <Link to={'/subscription'}>Subscription</Link>
           <Link to={'/about-us'}>About Us</Link>
           <Link to={'/profile'}>Profile</Link>
+          {user?.username == 'podestal' && <Link to={'/orders'}>Orders</Link>}
           <Logout />
         </>
         :

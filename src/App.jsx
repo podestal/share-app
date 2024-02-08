@@ -12,6 +12,7 @@ import Subscription from "./pages/Subscription"
 import Service from "./pages/Service"
 import Footer from './components/Footer'
 import MoviesPage from './pages/MoviesPage'
+import OrdersPage from './pages/OrdersPage'
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
               <Route path="profile" element={<Profile />}/>
               <Route path="subscription" element={<Subscription />}/>
               <Route path="service/:id" element={<Service />}/>
+              <Route path='orders' element={<OrdersPage />}/>
             </Route>
           </Route>
           <Route element={<PersistLogin />}>
