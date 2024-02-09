@@ -325,11 +325,19 @@ transition: 0.4s ease-in-out;
 }
 
 .subscription-platform-disney {
-    background-color: #23046c;
+    background-color: #1450A3;
 }
 
 .subscription-platform-prime {
     background-color: #4da5dc;
+}
+
+.subscription-platform-hbo {
+    background-color: #211C6A;
+}
+
+.subscription-platform-star {
+    background-color: #E55604;
 }
 
 .subscription-body {
@@ -607,8 +615,8 @@ transition: 0.4s ease-in-out;
 /* Footer */
 
 .footer {
-    margin-top: 7rem;
-    height: 3.5rem;
+    margin-top: 4rem;
+    height: 18rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -616,6 +624,7 @@ transition: 0.4s ease-in-out;
     align-items: center;
     position: relative;
     bottom: 0;
+    border-top: #0d41e1 3px solid;
 }
 
 .footer-info-container {
@@ -672,6 +681,42 @@ transition: 0.4s ease-in-out;
 
     .access-container form button {
         margin-top: 2rem;
+    }
+
+    .movies-container {
+        margin-bottom: 4rem;
+    }
+
+    .title-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .title-container h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .title-container .title-img {
+        text-align: center;
+        margin: auto;
+    }
+
+    .title-container .logos-container {
+        text-align: center;
+        width: 100%;
+        margin: 1.5rem auto;
+    }
+
+    .title-container .logos-container .logo-container {
+        text-align: center;
+        margin: auto;
+    }
+
+    .title-container .logos-container .logo-container a div {
+        margin: auto;
+        text-align: center;
     }
 
   }
@@ -771,8 +816,45 @@ transition: 0.4s ease-in-out;
         margin: 3rem auto;
     }
 
+    .movies-container {
+        margin-bottom: 4rem;
+    }
+
+    .title-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .title-container h3 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .title-container .title-img {
+        text-align: center;
+        margin: auto;
+    }
+
+    .title-container .logos-container {
+        text-align: center;
+        width: 100%;
+        margin: 1.5rem auto;
+    }
+
+    .title-container .logos-container .logo-container {
+        text-align: center;
+        margin: auto;
+    }
+
+    .title-container .logos-container .logo-container a div {
+        margin: auto;
+        text-align: center;
+    }
+
     .footer {
-        margin-top: 10rem;
+        margin-top: 4rem;
+        height: 30rem;
     }
 
     .footer-info-container {
