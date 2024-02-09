@@ -343,6 +343,24 @@ transition: 0.4s ease-in-out;
     margin: 1rem;
 }
 
+.subscription-details .profiles-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.subscription-details .profiles-container .profile-item {
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.subscription-details .profiles-container .profile-active {
+    background-color: #0d6efd;
+}
+
 .subscription-details p {
     border-bottom: 1px solid grey;
     margin: 30px 0;
@@ -732,6 +750,25 @@ transition: 0.4s ease-in-out;
     .access-container form input {
         width: 100%;
         margin: 1rem auto;
+    }
+
+    .purchase-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .purchase-features-container {
+        text-align: center;
+        width: 55%;
+        margin: 1.5rem auto;
+        order: 2;
+    }
+
+    .purchase-options-container form button {
+        width: 100%;
+        margin: 3rem auto;
     }
 
     .footer {

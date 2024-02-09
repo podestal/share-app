@@ -37,7 +37,7 @@ const YapeModal = ({ order, screenId, days, setModal, totalPrice }) => {
         </div>
         :
         <div className='spinner-container'>
-            <h2>Estamos procesando tu pago</h2>
+            <h2>Estamos procesando su pago</h2>
             <Bars 
                 color='#0d6efd'
             />

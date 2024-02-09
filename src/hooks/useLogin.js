@@ -17,7 +17,7 @@ const useLogin = (user, setUser, setError, setUsername, setPassword) => {
             setPassword('')
             localStorage.setItem('refresh', JSON.stringify(refreshToken))
             localStorage.setItem('access', JSON.stringify(accessToken))
-            navigate('/')
+            navigate('/home')
         },
         onError: err => setError(err.response.data.detail),
     })

@@ -14,7 +14,7 @@ const Service = ({ service }) => {
   return (
     <div className="service-container service-container-show">
         <div className="service-data">
-            <Link to={user ? `/service/${service.id}` : '/login'}><h3 className="service-title">{service.platform}</h3></Link>
+            <Link to={user ? `/service/${service.id}` : '/login'}><h3 className="service-title">{service.comercial_name}</h3></Link>
             <p className="service-price service-price-usd">{service.price.toFixed(2)} USD</p>
             <p className="service-price service-price-pen">{(service.price*3.7).toFixed(2)} PEN</p>
             <button className="service-btn btn btn-primary" onClick={handleJoin}>Unirte</button>

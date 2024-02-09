@@ -16,6 +16,7 @@ const Signup = () => {
     const [pwd, setPwd] = useState("")
     const [err, setErr] = useState("")
     const navigate = useNavigate()
+    const regExp = /^(?=.*[0-9])(?=.*[a-z])/
 
     const {mutate: createCustomerMutation} = useMutation({
         mutationFn: data => createCustomer(data),
@@ -35,11 +36,18 @@ const Signup = () => {
     const handleSubmit = e => {
         setErr("")
         e.preventDefault()
-        if (password === pwd) {
+        if (password !== pwd) {
+            setErr("Passwords must match")
+        }
+        else if (!regExp.test(password)) {
+            setErr("Passwords must be alphanumerical")
+        }
+        else if (password.length < 8) {
+            setErr("Password must be at least 8 characters long")
+        } 
+        else {
             createUserMutation({ email, username, password, first_name: firstName, last_name: lastName })
             navigate('/login')
-        } else {
-            setErr("Passwords must match")
         }
     }
 

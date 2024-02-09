@@ -9,7 +9,6 @@ const Logout = () => {
     const navigate = useNavigate()
 
     const handleLogout = e => {
-        e.preventDefault()
         setUser()
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')

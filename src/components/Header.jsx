@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom'
 import Logout from './Logout'
 import useUser from '../hooks/useUser'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Header = () => {
 
   const { user } = useUser()
   const [show, setShow] = useState(false)
-  const [access, setAccess] = useState(JSON.parse(localStorage.getItem('access')) || "")
 
   const handleNavBar = () => {
     setShow(!show)
@@ -20,7 +19,7 @@ const Header = () => {
       </dir>
       <nav className='header-nav' id='links'>
         {console.log('user from header',user)}
-        {access.length > 0
+        {user?.accessToken
         ?
         <>
           <Link to={'/subscription'}>Subscripciones</Link>

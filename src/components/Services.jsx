@@ -16,9 +16,11 @@ const Services = () => {
 
     const {data, isLoading, isError, error, isSuccess} = useServices()
 
-    if (isLoading) return <p>Loading ...</p>
+    if (isLoading) return <Spinner />
 
-    if (isError) return <Spinner />
+    if (isError) return (<div className="empty-body">
+                                <p>{error.message}</p>
+                            </div>)
 
     if (isSuccess) {setServices(data.data)}
     
