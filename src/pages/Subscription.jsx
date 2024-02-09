@@ -1,34 +1,43 @@
 import { useEffect, useState } from "react"
 import useUser from "../hooks/useUser"
 import SubscriptionItem from "../components/SubscriptionItem"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import { customerScreen } from "../api/api"
+import Spinner from "../components/Spinner"
 
 
 const Subscription = () => {
 
   const {user} = useUser()
-  const [subscriptions, useSubscriptions] = useState([])
 
-  const {mutate} = useMutation({
-    mutationFn: data => customerScreen(data),
-    onSuccess: res => useSubscriptions(res.data),
-    onError: err => console.log(err),
+  const {data: subscriptions, isLoading, isError, error} = useQuery({
+    queryKey: ['subscriptions'],
+    queryFn: () => customerScreen({ id: user?.customerId, access: user?.accessToken})
   })
 
+  if (isLoading) return <Spinner />
 
+  if (isError) return (
+    <div className="empty-body">
+      <p>{error.message}</p>
+    </div>
+  )
 
-  useEffect(() => {
-    console.log('user from subscription', user)
-    mutate({ id: user?.customerId, access: user?.accessToken})
-  }, [user])
+  // useEffect(() => {
+  //   console.log('user from subscription', user)
+  //   mutate({ id: user?.customerId, access: user?.accessToken})
+  // }, [user])
+
 
   return (
+
     <div className="main-body">
-      {subscriptions.length > 0 
+      {console.log('from subscription', user)}
+      {console.log('subscriptions', subscriptions)}
+      {subscriptions.data.length > 0 
       ?
       <div className="subscriptions-container">
-        {subscriptions.map(subscription => (
+        {subscriptions.data.map(subscription => (
           <SubscriptionItem 
             key={subscription.id}
             subscription={subscription}
@@ -37,7 +46,7 @@ const Subscription = () => {
       </div>
       :
       <div className="empty-body">
-        <h3>You do not have any subscriptions yet</h3>
+        <h3>Aún no cuentas con ninguna subscripción</h3>
       </div>
       }
     </div>

@@ -1,4 +1,5 @@
 import './app.css'
+import { useState } from 'react'
 import { Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
 import Login from "./pages/Login"
@@ -16,13 +17,15 @@ import OrdersPage from './pages/OrdersPage'
 
 const App = () => {
 
+  const [access, setAccess] = useState(JSON.parse(localStorage.getItem('access')) || "")
+
   return (
     <div className="main">
         <Header />
-        <Routes>
+        <Routes>    
           <Route element={<PersistLogin />}>  
             <Route element={<AuthRequired />}>
-              <Route path="" element={<Home />}/>
+              <Route path="home" element={<Home />}/>
               <Route path="about-us" element={<About />}/>
               <Route path="profile" element={<Profile />}/>
               <Route path="subscription" element={<Subscription />}/>
@@ -30,9 +33,7 @@ const App = () => {
               <Route path='orders' element={<OrdersPage />}/>
             </Route>
           </Route>
-          <Route element={<PersistLogin />}>
-            <Route path="" element={<Home />}/>
-          </Route>
+          <Route path="" element={<Home />}/>
           <Route path="login" element={<Login />}/>
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />

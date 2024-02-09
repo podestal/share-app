@@ -3,6 +3,7 @@ import useServices from '../hooks/useServices'
 import Service from './Service'
 import useUser from '../hooks/useUser'
 import useServicesContext from '../hooks/useServicesContext'
+import Spinner from './Spinner'
 
 const Services = () => {
 
@@ -17,7 +18,7 @@ const Services = () => {
 
     if (isLoading) return <p>Loading ...</p>
 
-    if (isError) return <p>{error.message}</p>
+    if (isError) return <Spinner />
 
     if (isSuccess) {setServices(data.data)}
     

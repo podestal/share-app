@@ -11,7 +11,7 @@ const MoviesFinder = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-      console.log(moviesData)
+      console.log('movies data', moviesData)
     }, [])
 
     const handleSearch = e => {
@@ -19,7 +19,7 @@ const MoviesFinder = () => {
         setNotFoundMessage("")
         const lowerTitle = title.toLocaleLowerCase()
         const myTitles = moviesData.filter(movie => {
-          if (movie.original_title.includes(lowerTitle)) {
+          if (movie.original_title.toLowerCase().includes(lowerTitle)) {
             return movie
           }
            else if (movie.title_two.includes(lowerTitle)) {

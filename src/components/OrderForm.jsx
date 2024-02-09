@@ -56,7 +56,7 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
         setTimeout(() => {
             setLoading(false)
             navigate('/subscription')
-        }, 5000)
+        }, 20000)
         
     }
 

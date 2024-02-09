@@ -19,7 +19,6 @@ const Service = ({ service }) => {
             <p className="service-price service-price-pen">{(service.price*3.7).toFixed(2)} PEN</p>
             <button className="service-btn btn btn-primary" onClick={handleJoin}>Unirte</button>
         </div>
-        <div className={`service-img service-img-${(service.platform).toLowerCase()}`}></div>
     </div>
   )
 }

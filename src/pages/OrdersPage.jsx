@@ -2,6 +2,7 @@ import {useState} from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getOrders } from '../api/api'
 import Orders from '../components/Orders'
+import Spinner from '../components/Spinner'
 
 const OrdersPage = () => {
 
@@ -11,7 +12,7 @@ const OrdersPage = () => {
         queryFn: () => getOrders({ access })
     })
 
-    if (isLoading) return <p>Loading ...</p>
+    if (isLoading) return <Spinner />
 
     if (isError) return <p>{error.message}</p>
 
