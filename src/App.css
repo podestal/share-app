@@ -599,7 +599,7 @@ transition: 0.4s ease-in-out;
     align-items: center;
     position: relative;
     bottom: 0;
-    border-top: #0d41e1 3px solid;
+    background-color: rgb(17, 17, 17);
 }
 
 .footer-info-container {
