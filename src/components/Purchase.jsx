@@ -18,12 +18,19 @@ const customStyles = {
 const Purchase = ({ screen }) => {
 
   const [errorMsg, setErrorMsg] = useState("")
-  const [price, setPrice] = useState(screen?.service.price.toFixed(2) || 0)
+  const [initialPrice, setInitialPrice] = useState((screen?.service.price * 3.7).toFixed(2) || 0)
+  const [price, setPrice] = useState(0)
+
+  const priceOne = initialPrice
+  const priceThree = (initialPrice * 0.97).toFixed(2)
+  const priceSix = (initialPrice * 0.94).toFixed(2)
+  const priceNine = (initialPrice * 0.91).toFixed(2)
 
   const options = [
-    {value: 'T', label: 'Tres Meses', price, days: 90},
-    {value: 'S', label: 'Seis Meses', price: (price * 0.95).toFixed(2), days: 180},
-    {value: 'N', label: 'Nueve Meses', price: (price * 0.90).toFixed(2), days: 270},
+    {value: 'O', label: 'Un Mes', price: priceOne, totalPrice: priceOne , days: 30},
+    {value: 'T', label: 'Tres Meses', price: priceThree, totalPrice: (priceThree * 3).toFixed(2) , days: 90},
+    {value: 'S', label: 'Seis Meses', price: priceSix, totalPrice: (priceSix * 6).toFixed(2) ,days: 180},
+    {value: 'N', label: 'Nueve Meses', price: priceNine, totalPrice: (priceNine * 9).toFixed(2) ,days: 270},
   ]
 
   const {user} = useUser()
@@ -52,24 +59,24 @@ const Purchase = ({ screen }) => {
 
   return (
     <>
-      {console.log('screen', screen)}
       {screen
       ?
+
         <div className='purchase-container'>
           <div className='purchase-options-container'>
             <p>{errorMsg}</p>
             <h2>Price</h2>
-            {days ? <p>S/.{(price*3.7).toFixed(2)} al mes</p> : <p>S/.0.00 al mes</p>}
-            <p>Total: S/.{((price*3.7) * (days / 30)).toFixed(2)}</p>
+            {days ? <p>S/.{price} al mes</p> : <p>S/.0.00 al mes</p>}
+            <p>Total: S/.{totalPrice}</p>
             <h2>Periodo</h2>
             <form onSubmit={handleSubmit}>
               <Select 
                 options={options}
                 styles={customStyles}
                 onChange={option => {
-                  setTotalPrice(((option.price*3.7) * (option.days / 30)).toFixed(2))
-                  setDays(option.days)
                   setPrice(option.price)
+                  setTotalPrice(option.totalPrice)
+                  setDays(option.days)
                   setPeriod(option.value)}}
               />
               <button className='btn btn-primary' type='submit'>Ir a Pagar</button>

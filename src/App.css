@@ -32,31 +32,6 @@
     display: none;
 }
 
-/* button {
-    font-weight: bold; 
-    background-color: black;
-    border-image: linear-gradient(
-        to right, #07c8f9, #0d41e1
-    );
-    border-image-slice: 1;
-    color: #fff;
-    padding: 0.6rem 1.2rem;
-}
-
-button:hover {
-    background: linear-gradient(90deg, #07c8f9, #0d41e1);
-    border-image: none;
-    color: #fff;
-    border: none;
-} */
-/* 
-.main::after {
-    content: '';
-    display: block;
-    height: 3.5rem;
-} */
-
-/* Header */
 
 .scrolled-header {
     background-color: #000;
@@ -665,7 +640,6 @@ transition: 0.4s ease-in-out;
         flex-direction: column;
         align-items: center;
         width: 100%;
-        justify-content: space-around;
     }
 
     .purchase-features-container {
@@ -705,7 +679,7 @@ transition: 0.4s ease-in-out;
 
     .title-container .logos-container {
         text-align: center;
-        width: 100%;
+        width: 60%;
         margin: 1.5rem auto;
     }
 
@@ -865,6 +839,10 @@ transition: 0.4s ease-in-out;
     .footer-info-container .customer-service {
         text-align: center;
         margin-bottom: 0.8rem;
+    }
+
+    .footer-info-container .customer-service h3 {
+        margin-bottom: 1.4rem;
     }
 
     .footer-info-container .search {

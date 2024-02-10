@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
         <div className='search'>
           <h3>Encuentra Títuos de Series y Pelíulas</h3>
-          <a className='btn btn-primary' href="/#movies_finder">Buscador</a>
+          <a className='btn btn-primary' href="/home/#movies_finder">Buscador</a>
         </div>
         <div className='about'>
           <h3>Acerca de</h3>
