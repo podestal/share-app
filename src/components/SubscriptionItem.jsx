@@ -16,9 +16,10 @@ const SubscriptionItem = ({ subscription }) => {
     }
 
     const period = {
-        'T': 30,
-        'S': 60,
-        'N': 90,
+        'O': 30,
+        'T': 90,
+        'S': 180,
+        'N': 270,
     }
 
     useEffect(() => {

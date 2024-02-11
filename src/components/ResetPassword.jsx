@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { resetPassword } from '../api/api'
 
 const ResetPassword = () => {
+
+    const [email, setEmail] = useState("")
 
     const {mutate} = useMutation({
         mutationFn: data => resetPassword(data),
@@ -13,16 +15,19 @@ const ResetPassword = () => {
     const handleSubmit = e => {
         e.preventDefault()
         mutate( {
-            "uid": 'MzM',
-            "token": "c27bhs-110e0d448d9bc2324dba43d00e9d1adc",
-            "new_password": "13angulos",
-            "re_new_password": "13angulos",
+            email
         })
     }
 
   return (
     <form onSubmit={handleSubmit}>
-        <button>Submit</button>
+        <input 
+            type='email'
+            placeholder='Email'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+        />
+        <button className='btn btn-primary'>Submit</button>
     </form>
   )
 }

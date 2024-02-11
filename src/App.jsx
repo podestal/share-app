@@ -14,6 +14,7 @@ import Service from "./pages/Service"
 import Footer from './components/Footer'
 import MoviesPage from './pages/MoviesPage'
 import OrdersPage from './pages/OrdersPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 
 const App = () => {
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="signup" element={<Signup />}/>
           <Route path="about" element={<About />} />
           <Route path="movies" element={<MoviesPage />} />
+          <Route path="reset" element={<ResetPasswordPage/>} />
         </Routes>
       <Footer /> 
     </div>

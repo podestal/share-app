@@ -13,7 +13,6 @@ const Footer = () => {
           <h3>Servicio al cliente</h3>
           <p>Los 7 días de la semana, 24 horas al día</p>
           <p>Contáctanos al 973000006</p>
-          <p>Respuesta en un máximo de 8 horas</p>
         </div>
         <div className='search'>
           <h3>Encuentra Títuos de Series y Pelíulas</h3>

@@ -4,7 +4,8 @@ const BASE_URL = 'http://127.0.0.1:8000/'
 const LOGIN = 'auth/jwt/create/'
 const REFRESH = 'auth/jwt/refresh/'
 const SIGNUP = 'auth/users/'
-const RESET = 'auth/users/reset_password_confirm/'
+const NEW_PASSWORD = 'auth/users/reset_password_confirm/'
+const RESET_PASSWORD = 'auth/users/reset_password/'
 const CUSTOMER = 'api/customers/'
 const SERVICES = 'api/services/'
 const BASE_SCREENS = '/api/screens/'
@@ -28,7 +29,9 @@ export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{
     headers: { Authorization: `JWT ${data.access}` }
 })
 
-export const resetPassword = async data => baseAxios.post(RESET, data)
+export const resetPassword = async data => baseAxios.post(RESET_PASSWORD, data)
+
+export const newPassword = async data => baseAxios.post(NEW_PASSWORD, data)
 
 export const services = async data => baseAxios.get(SERVICES)
     

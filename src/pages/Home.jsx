@@ -15,7 +15,7 @@ const Home = () => {
     <>  
         <div className='hero' id='movies_finder'>
           <div className='main-body'>
-            <h1>Paga menos y disfruta de la mejor calidad en streaming</h1>
+            <h1>Encuentra donde se transmite el título de película o serie que estés buscando</h1>
             <MoviesFinder />  
           </div>
         </div>
