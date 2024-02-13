@@ -1,10 +1,8 @@
 import React from 'react'
-import ResetPassword from '../components/ResetPassword'
 
 const About = () => {
   return (
     <div className='main-body'>
-      <ResetPassword />
       <div className='about-container'>
         <h2>Acerca de Nosotros</h2>
         <p>MyShare.com es un mercado virtual que te permite conectar con dueños de cuentas de streaming, unirte y ahorrar

@@ -480,6 +480,22 @@ transition: 0.4s ease-in-out;
     font-size: 0.7rem;
 }
 
+.title-container .logos-container {
+    text-align: center;
+    width: 100%;
+    margin: 1.5rem auto;
+}
+
+.title-container .logos-container .logo-container {
+    text-align: center;
+    margin: auto 0.5rem;
+}
+
+.title-container .logos-container .logo-container a div {
+    margin: auto;
+    text-align: center;
+}
+
 .logo {
     width: 50px;
     height: 50px;
