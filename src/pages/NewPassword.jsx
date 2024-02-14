@@ -1,4 +1,7 @@
 import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
+import { newPassword } from "../api/api"
+import { useParams, useNavigate } from "react-router-dom"
 
 const NewPassword = () => {
 
@@ -6,9 +9,20 @@ const NewPassword = () => {
     const [pwd, setPwd] = useState("")
     const [err, setErr] = useState("")
     const regExp = /^(?=.*[0-9])(?=.*[a-z])/
+    const params = useParams()
+    const navigate = useNavigate()
+
+    const {mutate: newPasswordMutation} = useMutation({
+        mutationFn: data => newPassword(data),
+        onSuccess: res => {
+            console.log(res)
+            navigate('/login')},
+        onError: error => console.log(error)
+    })
 
     const handleSubmit = e => {
         e.preventDefault()
+        console.log(params)
         setErr("")
         if (password !== pwd) {
             setErr("Passwords must match")
@@ -20,8 +34,7 @@ const NewPassword = () => {
             setErr("Password must be at least 8 characters long")
         } 
         else {
-            createUserMutation({ email, username, password, first_name: firstName, last_name: lastName })
-            navigate('/login')
+            newPasswordMutation({ uid:params.uid, token:params.token, new_password: password, re_new_password: pwd })
         }
     }
   
