@@ -23,12 +23,6 @@ const Subscription = () => {
     </div>
   )
 
-  // useEffect(() => {
-  //   console.log('user from subscription', user)
-  //   mutate({ id: user?.customerId, access: user?.accessToken})
-  // }, [user])
-
-
   return (
 
     <div className="main-body">

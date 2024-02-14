@@ -383,10 +383,19 @@ transition: 0.4s ease-in-out;
     font-size: 2.5rem;
 }
 
+.access-container-success,
 .access-container-error {
-    background-color: #e40713;
     padding: 0.6rem;
     border-radius: 15px;
+    text-align: center;
+}
+
+.access-container-error {
+    background-color: #e40713;
+}
+
+.access-container-success {
+    background-color: #38ef7d;
 }
 
 .access-container form {
@@ -399,9 +408,10 @@ transition: 0.4s ease-in-out;
 }
 
 .access-container form input {
-    margin: 1rem;
+    margin: 1rem auto;
     border-radius: 15px;
     padding: 10px;
+    width: 100%;
 }
 
 .access-container form button {

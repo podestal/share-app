@@ -25,13 +25,13 @@ const NewPassword = () => {
         console.log(params)
         setErr("")
         if (password !== pwd) {
-            setErr("Passwords must match")
+            setErr("Las contraseñas deben coincidir")
         }
         else if (!regExp.test(password)) {
-            setErr("Passwords must be alphanumerical")
+            setErr("Contraseña debe de ser alfanumérica")
         }
         else if (password.length < 8) {
-            setErr("Password must be at least 8 characters long")
+            setErr("Contraseña debe de tener al menos 8 caracteres")
         } 
         else {
             newPasswordMutation({ uid:params.uid, token:params.token, new_password: password, re_new_password: pwd })

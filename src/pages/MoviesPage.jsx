@@ -2,11 +2,13 @@ import React from 'react'
 import useMovies from '../hooks/useMovies'
 import { Link } from 'react-router-dom'
 import useServicesContext from '../hooks/useServicesContext'
+import useUser from '../hooks/useUser'
 
 const MoviesPage = () => {
 
     const {movies} = useMovies()
     const {services} = useServicesContext()
+    const {user} = useUser()
 
   return (
     <div className='main-body'>
@@ -19,7 +21,7 @@ const MoviesPage = () => {
                 <div className='logos-container'>
                   {services.map(service =>  title.streaming.indexOf(service.comercial_name) != -1 &&                
                       <div className='logo-container'>
-                        <Link to={`/service/${service.id}`}><div className={`logo ${service.comercial_name.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
+                        <Link to={user ? `/service/${service.id}` : '/login'}><div className={`logo ${service.comercial_name.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
                         <span className='logo-text'>{((service.price * 3.7) * 0.9).toFixed(2)}</span>
                         <span className='logo-text'>Al mes</span>
                       </div>

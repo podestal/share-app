@@ -5,30 +5,39 @@ import { resetPassword } from '../api/api'
 const ResetPassword = () => {
 
     const [email, setEmail] = useState("")
+    const [error, setError] = useState("")
+    const [successful, setSuccsessful] = useState("")
 
     const {mutate} = useMutation({
         mutationFn: data => resetPassword(data),
-        onSuccess: res => console.log(res),
-        onError: err => console.log(err)
+        onSuccess: res => setSuccsessful('Revise su correo electronico'),
+        onError: err => setError(err.message),
     })
 
     const handleSubmit = e => {
         e.preventDefault()
+        setError("")
+        setSuccsessful("")
         mutate( {
             email
         })
+        setEmail("")
     }
 
   return (
-    <form onSubmit={handleSubmit}>
-        <input 
-            type='email'
-            placeholder='Email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-        />
-        <button className='btn btn-primary'>Submit</button>
-    </form>
+    <>
+        {successful && <p className='access-container-success'>{successful}</p>}
+        {error && <p className='access-container-error'>{error}</p>}   
+        <form onSubmit={handleSubmit}>
+            <input 
+                type='email'
+                placeholder='Email'
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+            />
+            <button className='btn btn-primary'>Submit</button>
+        </form>
+    </>
   )
 }
 
