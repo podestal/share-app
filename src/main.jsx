@@ -12,7 +12,7 @@ import { BrowserRouter } from 'react-router-dom'
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <MoviesProvider>
       <ServicesProvider>
         <UserProvider>
@@ -24,6 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </QueryClientProvider>
         </UserProvider>
       </ServicesProvider>
-    </MoviesProvider>
-  </React.StrictMode>,
+    </MoviesProvider>,
+  // </React.StrictMode>,
 )

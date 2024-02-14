@@ -5,11 +5,6 @@ import { useEffect } from 'react'
 const Home = () => {
 
   const regExp = /^(?=.*[0-9])(?=.*[a-z])/
-  // (?=.*[a-z])
-
-  useEffect(() => {
-    console.log('testing', regExp.test('13angulo'));
-  })
 
   return (
     <>  
