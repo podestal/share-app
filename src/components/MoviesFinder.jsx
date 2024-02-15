@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { moviesData } from '../../movies/moviesData'
+import { moviesData } from '../movies/moviesData'
 import useMovies from '../hooks/useMovies'
 import { useNavigate } from 'react-router-dom'
 
