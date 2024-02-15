@@ -44,7 +44,7 @@ const MoviesFinder = () => {
         {notFoundMessage && <p>{notFoundMessage}</p>}
         <input 
             type="text" 
-            placeholder='Titulo de la película'
+            placeholder='Titulo de la película o serie'
             value={title}
             onChange={e => setTitle(e.target.value)}
         />
