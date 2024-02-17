@@ -47,7 +47,7 @@ const Signup = () => {
         } 
         else {
             createUserMutation({ email, username, password, first_name: firstName, last_name: lastName })
-            navigate('/login')
+            navigate('/confirm')
         }
     }
 

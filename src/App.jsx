@@ -16,6 +16,8 @@ import MoviesPage from './pages/MoviesPage'
 import OrdersPage from './pages/OrdersPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import NewPassword from './pages/NewPassword'
+import ConfirmEmailPage from './pages/ConfirmEmailPage'
+import ActivateEmailPage from './pages/ActivateEmailPage'
 
 const App = () => {
 
@@ -42,6 +44,8 @@ const App = () => {
           <Route path="movies" element={<MoviesPage />} />
           <Route path="reset" element={<ResetPasswordPage/>} />
           <Route path="reset_new/:uid/:token" element={<NewPassword/>} />
+          <Route path="activate/:uid/:token" element={<ConfirmEmailPage/>} />
+          <Route path="confirm" element={<ActivateEmailPage/>} />
         </Routes>
       <Footer /> 
     </div>

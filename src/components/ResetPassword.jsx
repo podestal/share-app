@@ -10,7 +10,9 @@ const ResetPassword = () => {
 
     const {mutate} = useMutation({
         mutationFn: data => resetPassword(data),
-        onSuccess: res => setSuccsessful('Revise su correo electronico'),
+        onSuccess: res => {
+            console.log(res)
+            setSuccsessful('Revise su correo electronico')},
         onError: err => setError(err.message),
     })
 
