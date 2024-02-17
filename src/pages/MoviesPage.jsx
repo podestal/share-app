@@ -12,6 +12,8 @@ const MoviesPage = () => {
 
   return (
     <div className='main-body'>
+      {console.log(movies)}
+      {console.log(services)}
       <div className='movies-container'>
         {movies && movies.map(title => (
             <div key={title.original_title} className='title-container'>
@@ -21,6 +23,7 @@ const MoviesPage = () => {
                 <div className='logos-container'>
                   {services.map(service =>  title.streaming.indexOf(service.comercial_name) != -1 &&                
                       <div className='logo-container'>
+                        {console.log(`logo: ${service.comercial_name.toLowerCase().replace(' ', '-').replace('+', '')}-logo`)}
                         <Link to={user ? `/service/${service.id}` : '/login'}><div className={`logo ${service.comercial_name.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
                         <span className='logo-text'>{((service.price * 3.7) * 0.9).toFixed(2)}</span>
                         <span className='logo-text'>Al mes</span>

@@ -533,6 +533,10 @@ transition: 0.4s ease-in-out;
     background: url("./assets/services-pics/paramount-logo.png") no-repeat center center/cover;
 }
 
+.star-plus-logo {
+    background: url("./assets/services-pics/star-plus-logo.png") no-repeat center center/cover;
+}
+
 .title-container {
     display: flex;
     width: 40%;

@@ -31,7 +31,7 @@ const About = () => {
         <h2>Seguridad y Pagos</h2>
         <p>En MyShare no nos quedamos con la información de medios de pago de nuestros clientes, es por eso que implementamos
           Yape, con este medio de pago solo tienes que subir tu comprobante del pago efectuado y nuestro sistema se encargará de 
-          verificarlo, en menos de un minuto, se le entregará las credenciales necesarias para acceder al servicio.
+          verificarlo, una vez el pago sea confirmado, se le entregarán las credenciales necesarias para acceder al servicio.
         </p>
       </div>
     </div>
