@@ -39,7 +39,7 @@ const Order = ({ order }) => {
     }
 
   return (
-    <div>
+    <div className='order-container'>
         <h3>Order Status: {orderStatus[order?.status]}</h3>
         <h3>Customer:</h3>
         <p>Name: {order?.user?.first_name}</p>
@@ -50,8 +50,10 @@ const Order = ({ order }) => {
         <p>Period: {order?.period}</p>
         <h3>Receipt:</h3>
         <img src={`http://127.0.0.1:8000${order?.order_receipt[0]?.image}`} alt="receipt pic" />
-        <button onClick={handleCompleteOrder} className='btn btn-primary'>Complete</button>
-        <button onClick={handleDeleteOrder} className='btn btn-danger'>Delete</button>
+        <div className='buttons-container'>
+            <button onClick={handleCompleteOrder} className='btn btn-primary'>Complete</button>
+            <button onClick={handleDeleteOrder} className='btn btn-danger'>Delete</button>
+        </div>
     </div>
   )
 }

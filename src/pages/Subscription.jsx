@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import useUser from "../hooks/useUser"
 import SubscriptionItem from "../components/SubscriptionItem"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { customerScreen } from "../api/api"
 import Spinner from "../components/Spinner"
 
