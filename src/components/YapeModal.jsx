@@ -1,16 +1,17 @@
 import {useState} from 'react'
 import OrderForm from './OrderForm'
 import { deleteOrder } from '../api/api'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Bars } from 'react-loader-spinner'
 
 const YapeModal = ({ order, screenId, days, setModal, totalPrice }) => {
 
     const [loading, setLoading] = useState(false)
+    const queryClient = useQueryClient()
 
     const {mutate: deleteOrderMutation} = useMutation({
         mutationFn: data => deleteOrder(data),
-        onSuccess: res => console.log(res)
+        onSuccess: queryClient.invalidateQueries(['orders'])
     })
 
     const handelDeleteOrder = () => {
@@ -20,7 +21,6 @@ const YapeModal = ({ order, screenId, days, setModal, totalPrice }) => {
 
   return (
     <div className='modal-background'>
-        {console.log('order from modal', order)}
         {!loading 
         ?
         <div className='modal-container'>

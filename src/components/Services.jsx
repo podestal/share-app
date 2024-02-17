@@ -1,18 +1,12 @@
-import { useEffect } from 'react'
+
 import useServices from '../hooks/useServices'
 import Service from './Service'
-import useUser from '../hooks/useUser'
 import useServicesContext from '../hooks/useServicesContext'
 import Spinner from './Spinner'
 
 const Services = () => {
 
-    const {user} = useUser()
     const {services, setServices} = useServicesContext()
-
-    useEffect(() => {
-        console.log('user', user);
-    }, [])
 
     const {data, isLoading, isError, error, isSuccess} = useServices()
 

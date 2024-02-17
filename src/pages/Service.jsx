@@ -15,7 +15,6 @@ const Service = () => {
 
   return (
     <div className='main-body'>
-        {console.log('screen', screen.data)}
         <Purchase 
             screen={screen.data[0]}
         />        

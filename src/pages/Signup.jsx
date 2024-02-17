@@ -21,7 +21,6 @@ const Signup = () => {
     const {mutate: createCustomerMutation} = useMutation({
         mutationFn: data => createCustomer(data),
         onSuccess: res => setUser({ ...user, customerId: res.data.id }),
-        onError: err => console.log(err)
     })  
 
     const {mutate: createUserMutation} = useMutation({

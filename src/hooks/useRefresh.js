@@ -8,8 +8,6 @@ const useRefresh = (user, setUser, setAccess) => {
             setAccess(res.data.access)
             setUser({ accessToken: res.data.access})
         },
-        // onSuccess: res => console.log('from refresh', res.data),
-        onError: err => console.log(err),
     })
 }
 

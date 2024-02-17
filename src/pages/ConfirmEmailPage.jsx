@@ -9,8 +9,6 @@ const ConfirmEmailPage = () => {
     const navigate = useNavigate()
     const {mutate: activateEmailMutation} = useMutation({
         mutationFn: data => activateEmail(data),
-        onSuccess: res => console.log(res),
-        onError: err=> console.log(err),
     })
 
     useEffect(() => {

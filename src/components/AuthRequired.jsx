@@ -4,12 +4,7 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 const AuthRequired = () => {
 
-    const {user} = useUser()
     const [access, setAccess] = useState(JSON.parse(localStorage.getItem('access')) || "")
-
-    useEffect(() => {
-        console.log('from require auth', access)
-    }, [])
 
   return (
         access 

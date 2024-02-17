@@ -15,18 +15,17 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
 
     const {mutate: createOrderReceiptMutation} = useMutation({
         mutationFn: data => createOrderReceipt(data),
-        onSuccess: res => console.log(res)
+        onSuccess: queryClient.invalidateQueries(['orders'])
     })
 
     const {mutate: updateOrderMutation} = useMutation({
         mutationFn: data => updateOrder(data),
-        onSuccess: res => console.log(res)
+        onSuccess: queryClient.invalidateQueries(['orders'])
     })
 
     const {mutate: updateScreenMutation} = useMutation({
         mutationFn: data => updateScreen(data),
         onSuccess: queryClient.invalidateQueries(['screen']),
-        onError: err => console.log(err)
     })
 
     const [img, setImg] = useState("")

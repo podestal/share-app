@@ -11,13 +11,11 @@ const Order = ({ order }) => {
     const {mutate: updateOrderMutation} = useMutation({
         mutationFn: data => updateOrder(data),
         onSuccess: res => queryClient.invalidateQueries(['orders']),
-        onError: err => console.log(err),
     })
 
     const {mutate: deleteOrderMutation} = useMutation({
         mutationFn: data => deleteOrder(data),
         onSuccess: res => queryClient.invalidateQueries(['orders']),
-        onError: err => console.log(err),
     })
 
     const orderStatus = {

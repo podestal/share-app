@@ -15,14 +15,11 @@ const NewPassword = () => {
     const {mutate: newPasswordMutation} = useMutation({
         mutationFn: data => newPassword(data),
         onSuccess: res => {
-            console.log(res)
             navigate('/login')},
-        onError: error => console.log(error)
     })
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(params)
         setErr("")
         if (password !== pwd) {
             setErr("Las contraseñas deben coincidir")

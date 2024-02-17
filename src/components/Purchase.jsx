@@ -44,7 +44,6 @@ const Purchase = ({ screen }) => {
   const {mutate: createOrderMutation} = useMutation({
     mutationFn: data => createOrder(data),
     onSuccess: res => setOrder(res.data),
-    onError: err => console.log(err),
   })
 
   const handleSubmit = e => {

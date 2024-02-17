@@ -27,7 +27,6 @@ const PersistLogin = () => {
              lastName: res.data.user.last_name,
              username: res.data.user.username
             })},
-        onError: err => console.log(err)
     })
     // const {mutate: getCustomer} = useCustomer(user, setUser)
     const {mutate: refresh} = useRefresh(user, setUser, setAccess)
@@ -38,13 +37,11 @@ const PersistLogin = () => {
         if (isExpired) {
             refresh({ refresh: refreshToken })
         }
-        // getCustomer({ access })
         getCustomerMutation({ access })
     }, [access])
 
   return (
     <>
-        {console.log('from persist login', user)}
         {access ? <Outlet /> : <Navigate to={'/login'}/>}
     </>
   )

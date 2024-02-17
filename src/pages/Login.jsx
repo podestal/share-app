@@ -18,10 +18,6 @@ const Login = () => {
         mutate({ username, password })
     }
 
-    useEffect(() => {
-        console.log("logged user", user);
-    }, [user])
-
   return (
     <div className='main-body'>
         <div className='access-container'>

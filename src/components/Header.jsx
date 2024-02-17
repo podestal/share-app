@@ -18,7 +18,6 @@ const Header = () => {
         <Link to={user?.accessToken ? '/home' : '/'} ><h1 className='header-logo'>MyShare</h1></Link>
       </dir>
       <nav className='header-nav' id='links'>
-        {console.log('user from header',user)}
         {user?.accessToken
         ?
         <>

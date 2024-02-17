@@ -34,8 +34,6 @@ const SubscriptionItem = ({ subscription }) => {
 
   return (
     <div className='service-container subscription-container'>
-        {console.log(subscription)}
-        {console.log('profiles', profiles)}
         <div className='subscription-header'>
             <h2 className={`subscription-platform subscription-platform-${(subscription.service.platform).toLowerCase()}`}>{subscription.service.platform}</h2>
             <button onClick={handleRenew}>Renovar</button>

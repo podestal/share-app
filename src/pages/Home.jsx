@@ -7,7 +7,6 @@ const Home = () => {
 
   return (
     <>  
-        {console.log('movies data updated', moviesData)}
         <div className='hero' id='movies_finder'>
           <div className='main-body'>
             <h1>Encuentra donde se transmite el título de película o serie que estés buscando</h1>
