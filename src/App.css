@@ -28,6 +28,12 @@
     justify-content: left;
 }
 
+.buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem;
+}
+
 .header-nav-mobile {
     display: none;
 }
@@ -627,6 +633,11 @@ transition: 0.4s ease-in-out;
     width: 100%;
 }
 
+.filter-buttons {
+    margin: 4rem auto;
+    width: 100%;
+}
+
 .order-container {
     margin: auto;
     width: 70%;
@@ -636,12 +647,6 @@ transition: 0.4s ease-in-out;
 .order-container img {
     width: 250px;
     height: 400px;
-}
-
-.order-container .buttons-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 2rem;
 }
 
 /* Footer */
