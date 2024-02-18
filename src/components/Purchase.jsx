@@ -3,9 +3,9 @@ import Select from 'react-select'
 import usePurchase from '../hooks/usePurchase'
 import useUser from '../hooks/useUser'
 import Features from './Features'
-import YapeModal from './YapeModal'
 import { createOrder } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 
 const customStyles = {
   option: (provided, state) => ({
@@ -20,6 +20,7 @@ const Purchase = ({ screen }) => {
   const [errorMsg, setErrorMsg] = useState("")
   const [initialPrice, setInitialPrice] = useState((screen?.service.price * 3.7).toFixed(2) || 0)
   const [price, setPrice] = useState(0)
+  const navigate = useNavigate()
 
   const priceOne = initialPrice
   const priceThree = (initialPrice * 0.97).toFixed(2)
@@ -37,13 +38,15 @@ const Purchase = ({ screen }) => {
   const [period, setPeriod] = useState("")
   const [days, setDays] = useState("")
   const {mutate} = usePurchase()
-  const [order, setOrder] = useState({})
   const [modal, setModal] = useState(false)
   const [totalPrice, setTotalPrice] = useState(0)
   
   const {mutate: createOrderMutation} = useMutation({
     mutationFn: data => createOrder(data),
-    onSuccess: res => setOrder(res.data),
+    onSuccess: res => {
+      navigate('/payment', { replace: true, state: {order: res.data, screenId: screen.id, days, totalPrice} })
+    },
+    onError: err => console.log(err)
   })
 
   const handleSubmit = e => {
@@ -52,16 +55,15 @@ const Purchase = ({ screen }) => {
     if (period == "") {
       return setErrorMsg("Selecciona un periodo")
     }
-    setModal(true)
-    createOrderMutation({ access: user.accessToken, order: {service: screen.service.id, period} })
+    createOrderMutation({ access: user.accessToken, order: {service: screen.service.id, customer: user.customerId, total: totalPrice, period, days, screen: screen.id} })
   }
-
   return (
     <>
       {screen
       ?
 
         <div className='purchase-container'>
+          {console.log('total price',totalPrice)}
           <div className='purchase-options-container'>
             <p>{errorMsg}</p>
             <h2>Price</h2>
@@ -90,15 +92,9 @@ const Purchase = ({ screen }) => {
             <Features 
               serviceId={screen.service.id}
               serviceTitle={screen.service.platform}
+              features={screen.service.features}
             />
           </div>
-        {modal && <YapeModal 
-          order={order}
-          screenId={screen.id}
-          days={days}
-          setModal={setModal}
-          totalPrice={totalPrice}
-        />}  
       </div>
       :
       <div className="empty-body">

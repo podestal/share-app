@@ -13,6 +13,7 @@ const BASE_SCREENS = '/api/screens/'
 const SCREEN = '/api/screens/?available=true&service='
 const FEATURES = '/api/features/'
 const ORDERS = '/api/orders/'
+const PAYMENT_CONFIRM = 'payment_confirmation/'
 
 const baseAxios = axios.create({
     baseURL: BASE_URL
@@ -40,7 +41,7 @@ export const services = async data => baseAxios.get(SERVICES)
     
 export const screen = async data => baseAxios.get(`${SCREEN}${data.id}`)
 
-export const updateScreen = async data => baseAxios.put(`${BASE_SCREENS}${data.id}/`, data.updates)
+export const updateScreen = async data => baseAxios.patch(`${BASE_SCREENS}${data.id}/`, data.updates)
 
 export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?customer=${data.id}`, {
     headers: { Authorization: `JWT ${data.access}`}
@@ -63,6 +64,8 @@ export const createOrderReceipt = async data => baseAxios.post(`${ORDERS}${data.
 export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.orderId}` ,{
     headers: { Authorization: `JWT ${data.access}`}
 })
+
+export const confirmOrder = async data => baseAxios.get(`http://127.0.0.1:8000/payment_confirmation/${data.email}`)
 
 export const updateOrder = async data => baseAxios.patch(`${ORDERS}${data.orderId}/`, data.updates, {
     headers: { Authorization: `JWT ${data.access}`}

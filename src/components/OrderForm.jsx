@@ -5,6 +5,7 @@ import useUser from '../hooks/useUser'
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import PaymentConfirmPage from '../pages/PaymentConfirmPage'
 
 const OrderForm = ({ order, screenId, days, setLoading }) => {
 
@@ -25,7 +26,7 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
 
     const {mutate: updateScreenMutation} = useMutation({
         mutationFn: data => updateScreen(data),
-        onSuccess: queryClient.invalidateQueries(['screen']),
+        // onSuccess: queryClient.invalidateQueries(['screen']),
     })
 
     const [img, setImg] = useState("")
@@ -33,6 +34,7 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
     const handleSubmit = e => {
         e.preventDefault()
         setErrorMsg("")
+        console.log('order from orderform', order)
         if (!img) {
             return setErrorMsg('Necesitamos que adjuntes tu comprobante')
         }
@@ -47,15 +49,10 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
         updateScreenMutation({ id: screenId, updates: {
           available: false, 
           period: order.period, 
-          customer: user.customerId,
           subscribed_at,
           due_date,
         }})
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-            navigate('/subscription')
-        }, 20000)
+        navigate('/processing')
         
     }
 

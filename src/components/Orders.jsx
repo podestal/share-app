@@ -20,6 +20,7 @@ const Orders = () => {
 
   return (
     <>
+      {console.log(orders.data)}
       <div className='filter-buttons buttons-container'>
         <button onClick={() => setFilter('S')} className='btn btn-primary'>Started</button>
         <button onClick={() => setFilter('P')} className='btn btn-primary'>Processing</button>

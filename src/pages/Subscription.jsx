@@ -26,6 +26,7 @@ const Subscription = () => {
   return (
 
     <div className="main-body">
+      {console.log('user', user)}
       {subscriptions.data.length > 0 
       ?
       <div className="subscriptions-container">

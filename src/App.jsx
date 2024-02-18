@@ -18,6 +18,8 @@ import ResetPasswordPage from './pages/ResetPasswordPage'
 import NewPassword from './pages/NewPassword'
 import ConfirmEmailPage from './pages/ConfirmEmailPage'
 import ActivateEmailPage from './pages/ActivateEmailPage'
+import PaymentPage from './pages/PaymentPage'
+import PaymentConfirmPage from './pages/PaymentConfirmPage'
 
 const App = () => {
 
@@ -46,6 +48,8 @@ const App = () => {
           <Route path="reset_new/:uid/:token" element={<NewPassword/>} />
           <Route path="activate/:uid/:token" element={<ConfirmEmailPage/>} />
           <Route path="confirm" element={<ActivateEmailPage/>} />
+          <Route path="payment" element={<PaymentPage/>} />
+          <Route path="processing" element={<PaymentConfirmPage/>} />
         </Routes>
       <Footer /> 
     </div>

@@ -36,7 +36,7 @@ const SubscriptionItem = ({ subscription }) => {
     <div className='service-container subscription-container'>
         <div className='subscription-header'>
             <h2 className={`subscription-platform subscription-platform-${(subscription.service.platform).toLowerCase()}`}>{subscription.service.platform}</h2>
-            <button onClick={handleRenew}>Renovar</button>
+            {/* <button onClick={handleRenew}>Renovar</button> */}
         </div>
         {renew && 
         <div className='subscription-body'>
