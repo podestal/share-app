@@ -22,7 +22,7 @@ const MoviesPage = () => {
                   {services.map(service =>  title.streaming.indexOf(service.comercial_name) != -1 &&                
                       <div className='logo-container'>
                         <Link to={user ? `/service/${service.id}` : '/login'}><div className={`logo ${service.comercial_name.toLowerCase().replace(' ', '-').replace('+', '')}-logo`}></div></Link>
-                        <span className='logo-text'>{((service.price * 3.7) * 0.9).toFixed(2)}</span>
+                        <span className='logo-text'>{((service.price * 3.7) * 0.91).toFixed(2)}</span>
                         <span className='logo-text'>Al mes</span>
                       </div>
                   )}
