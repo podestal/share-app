@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const BASE_URL_DEV = 'http://127.0.0.1:8000/'
-const BASE_URL_PROD = 'http://44.206.246.99/'
+const BASE_URL_PROD = 'http://44.206.246.99:8000/'
 const LOGIN = 'auth/jwt/create/'
 const REFRESH = 'auth/jwt/refresh/'
 const SIGNUP = 'auth/users/'
