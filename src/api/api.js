@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const BASE_URL_DEV = 'http://127.0.0.1:8000/'
-const BASE_URL_PROD = 'http://44.206.246.99:8000/'
+const BASE_URL_PROD = 'http://18.118.122.152:8000/'
 const LOGIN = 'auth/jwt/create/'
 const REFRESH = 'auth/jwt/refresh/'
 const SIGNUP = 'auth/users/'
@@ -66,7 +66,7 @@ export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.order
     headers: { Authorization: `JWT ${data.access}`}
 })
 
-export const confirmOrder = async data => baseAxios.get(`http://44.206.246.99/payment_confirmation/${data.email}`)
+export const confirmOrder = async data => baseAxios.get(`http://18.118.122.152:8000/payment_confirmation/${data.email}`)
 
 export const updateOrder = async data => baseAxios.patch(`${ORDERS}${data.orderId}/`, data.updates, {
     headers: { Authorization: `JWT ${data.access}`}

@@ -120,12 +120,15 @@ transition: 0.4s ease-in-out;
 
 .hero h1{
     font-size: 5rem;
+    margin: auto;
     z-index: 5;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 55%;
+    width: 80%;
+    line-height: 7rem;
 }
 
 .hero .movies-finder-form {
@@ -381,6 +384,7 @@ transition: 0.4s ease-in-out;
         to right, #07c8f9, #0d41e1
     );
     border-image-slice: 1;
+    height: 80vh;
 }
 
 .access-container-title {
@@ -690,7 +694,8 @@ transition: 0.4s ease-in-out;
 
 @media (min-width: 760px) and (max-width: 1080px) {
     .hero h1 {
-        font-size: 4.3rem;
+        font-size: 3.5rem;
+        line-height: 6rem;
     }
 
     .subscriptions-container {
@@ -804,10 +809,13 @@ transition: 0.4s ease-in-out;
     }
 
     .hero h1 {
-        font-size: 2.6rem;
-        line-height: 5rem;
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 4rem;
         margin-bottom: 0;
-        margin-top: -2rem;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero .mobile-header {
@@ -825,11 +833,12 @@ transition: 0.4s ease-in-out;
     }
 
     .access-container {
-        width: 85%;
+        width: 95%;
     }
 
     .access-container form {
         text-align: center;
+        width: 320px;
     }
 
     .access-container form input {
