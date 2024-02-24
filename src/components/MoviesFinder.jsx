@@ -7,7 +7,7 @@ const MoviesFinder = () => {
 
     const [title, setTitle] = useState("")
     const [notFoundMessage, setNotFoundMessage] = useState("")
-    const {movies, setMovies} = useMovies()
+    const {setMovies} = useMovies()
     const navigate = useNavigate()
 
     const handleSearch = e => {

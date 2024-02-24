@@ -29,7 +29,6 @@ const Order = ({ order }) => {
 
     const {mutate: updateScreenMutation} = useMutation({
         mutationFn: data => updateScreen(data),
-        // onSuccess: queryClient.invalidateQueries(['screen']),
     })
 
     const orderStatus = {

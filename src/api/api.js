@@ -17,7 +17,7 @@ const ORDERS = '/api/orders/'
 const PAYMENT_CONFIRM = 'payment_confirmation/'
 
 const baseAxios = axios.create({
-    baseURL: BASE_URL_PROD
+    baseURL: BASE_URL_DEV
 })
 
 export const login = async data => baseAxios.post(LOGIN, data)
@@ -40,7 +40,7 @@ export const resetPassword = async data => baseAxios.post(RESET_PASSWORD, data)
 
 export const newPassword = async data => baseAxios.post(NEW_PASSWORD, data)
 
-export const services = async data => baseAxios.get(SERVICES)
+export const getServices = async data => baseAxios.get(SERVICES)
     
 export const screen = async data => baseAxios.get(`${SCREEN}${data.id}`)
 
@@ -68,7 +68,9 @@ export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.order
     headers: { Authorization: `JWT ${data.access}`}
 })
 
-export const confirmOrder = async data => baseAxios.get(`https://share-api-ic9f.vercel.app/payment_confirmation/${data.email}`)
+export const confirmOrder = async data => baseAxios.get(`${PAYMENT_CONFIRM}${data.email}`)
+
+// export const confirmOrder = async data => baseAxios.get(`https://share-api-ic9f.vercel.app/payment_confirmation/${data.email}`)
 
 export const updateOrder = async data => baseAxios.patch(`${ORDERS}${data.orderId}/`, data.updates, {
     headers: { Authorization: `JWT ${data.access}`}

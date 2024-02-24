@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import useUser from '../hooks/useUser'
+import React, { useState } from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 
 const AuthRequired = () => {

@@ -6,7 +6,6 @@ const ActivateEmailPage = () => {
         <div>
             <h2>Revise su correo electrónico y active su cuenta</h2>
         </div>
-        
     </div>
   )
 }

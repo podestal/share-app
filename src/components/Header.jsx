@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Logout from './Logout'
 import useUser from '../hooks/useUser'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const Header = () => {
 

@@ -1,14 +1,17 @@
-
-import useServices from '../hooks/useServices'
+import { getServices } from '../api/api'
 import Service from './Service'
 import useServicesContext from '../hooks/useServicesContext'
+import { useQuery } from '@tanstack/react-query'
 import Spinner from './Spinner'
 
 const Services = () => {
 
     const {services, setServices} = useServicesContext()
 
-    const {data, isLoading, isError, error, isSuccess} = useServices()
+    const {data, isLoading, isError, error, isSuccess} = useQuery({
+        queryKey: ['services'],
+        queryFn: getServices
+    })
 
     if (isLoading) return <Spinner />
 

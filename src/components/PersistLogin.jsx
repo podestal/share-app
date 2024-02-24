@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Outlet, json } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import useUser from '../hooks/useUser'
-import useCustomer from '../hooks/useCustomer'
 import useRefresh from '../hooks/useRefresh'
 import { jwtDecode } from "jwt-decode";
 import { Navigate } from 'react-router-dom'
@@ -28,7 +27,6 @@ const PersistLogin = () => {
              username: res.data.user.username
             })},
     })
-    // const {mutate: getCustomer} = useCustomer(user, setUser)
     const {mutate: refresh} = useRefresh(user, setUser, setAccess)
 
     useEffect(() => {
