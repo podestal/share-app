@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const BASE_URL_DEV = 'http://127.0.0.1:8000/'
-const BASE_URL_PROD = 'http://18.118.122.152:8000/'
+const BASE_URL_PROD = 'https://share-api-ic9f.vercel.app/'
 const LOGIN = 'auth/jwt/create/'
 const REFRESH = 'auth/jwt/refresh/'
 const SIGNUP = 'auth/users/'
@@ -33,6 +33,8 @@ export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{
 })
 
 export const activateEmail = async data => baseAxios.post(ACTIVATE, data)
+.then(res => console.log(res))
+.catch(err => console.log(err))
 
 export const resetPassword = async data => baseAxios.post(RESET_PASSWORD, data)
 
@@ -66,7 +68,7 @@ export const deleteOrder = async data => baseAxios.delete(`${ORDERS}${data.order
     headers: { Authorization: `JWT ${data.access}`}
 })
 
-export const confirmOrder = async data => baseAxios.get(`http://18.118.122.152:8000/payment_confirmation/${data.email}`)
+export const confirmOrder = async data => baseAxios.get(`https://share-api-ic9f.vercel.app/payment_confirmation/${data.email}`)
 
 export const updateOrder = async data => baseAxios.patch(`${ORDERS}${data.orderId}/`, data.updates, {
     headers: { Authorization: `JWT ${data.access}`}
