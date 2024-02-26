@@ -15,7 +15,7 @@
 }
 
 .main-body {
-    margin-top: 7rem;
+    margin-top: 8rem;
     height: 100%;
 }
 
@@ -38,6 +38,10 @@
     display: none;
 }
 
+.message-page {
+    margin-top: 10rem;
+}
+
 
 .scrolled-header {
     background-color: #000;
@@ -53,7 +57,7 @@ transition: 0.4s ease-in-out;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 6rem;
+    height: 7rem;
     width: 100%;
     margin: auto;
     position: fixed;
@@ -70,11 +74,19 @@ transition: 0.4s ease-in-out;
     width: 40%;
     margin: auto;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .header-logo-container a {
     color: #f5f3f4;
     text-decoration: none;
+}
+
+.header-logo-container .logo {
+    background: url('./assets/services-pics/myshares-logo.png') no-repeat center center/cover;;
+    width: 180px;
+    height: 110px;
 }
 
 .header-logo {
@@ -769,7 +781,7 @@ transition: 0.4s ease-in-out;
 @media (max-width: 768px) {
 
     .header {
-        height: 20%;
+        height: 30%;
     }
 
     .header-mobile {
@@ -781,7 +793,6 @@ transition: 0.4s ease-in-out;
         display: block;
         font-size: 2rem;
         color: #fff;
-        margin-top: -2rem;
     }
 
     .header .header-nav {
@@ -795,6 +806,7 @@ transition: 0.4s ease-in-out;
     .header .header-logo-container {
         margin: 0 auto;
         height: 10%;
+        margin-bottom: 3rem;
     }
 
     .header .header-nav-mobile {

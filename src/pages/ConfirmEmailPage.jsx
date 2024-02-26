@@ -20,7 +20,7 @@ const ConfirmEmailPage = () => {
 
   return (
     <div className='empty-body'>
-        <div>
+        <div className='message-page'>
             <h2>Muchas gracias por confirmar su correo electrónico</h2>
             <br />
             <h2>Lo estamos redireccionando ...</h2>

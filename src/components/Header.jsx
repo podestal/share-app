@@ -14,9 +14,9 @@ const Header = () => {
 
   return (
     <div className={show ? 'header header-mobile' : 'header'} id='header'>
-      <dir className='header-logo-container'>
-        <Link to={user?.accessToken ? '/home' : '/'} ><h1 className='header-logo'>MyShare</h1></Link>
-      </dir>
+      <div className='header-logo-container'>
+        <Link to={user?.accessToken ? '/home' : '/'} ><div className='logo'></div></Link>
+      </div>
       <nav className='header-nav' id='links'>
         {user?.accessToken
         ?
