@@ -39,7 +39,7 @@ const Login = () => {
                 <button type="submit" className="btn btn-primary">Ingresa</button>
             </form>
             <p>Aún no tienes cuenta? <Link to={'/signup'}>Regístrate</Link> </p>
-            <Link to={'/reset'}>Olvidaste tu contraseña? </Link>
+            <Link to={'/reset'}>Olvidaste tu contraseña o usuario? </Link>
         </div>
     </div>
     
