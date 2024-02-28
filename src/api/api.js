@@ -17,7 +17,7 @@ const ORDERS = '/api/orders/'
 const PAYMENT_CONFIRM = 'payment_confirmation/'
 
 const baseAxios = axios.create({
-    baseURL: BASE_URL_PROD  
+    baseURL: BASE_URL_DEV  
 })
 
 export const login = async data => baseAxios.post(LOGIN, data)
@@ -33,8 +33,6 @@ export const getCustomer = async data => baseAxios.get(`${CUSTOMER}me/` ,{
 })
 
 export const activateEmail = async data => baseAxios.post(ACTIVATE, data)
-.then(res => console.log(res))
-.catch(err => console.log(err))
 
 export const resetPassword = async data => baseAxios.post(RESET_PASSWORD, data)
 
@@ -42,9 +40,13 @@ export const newPassword = async data => baseAxios.post(NEW_PASSWORD, data)
 
 export const getServices = async data => baseAxios.get(SERVICES)
     
-export const screen = async data => baseAxios.get(`${SCREEN}${data.id}`)
+export const getScreen = async data => baseAxios.get(`${SCREEN}${data.id}`)
 
-export const updateScreen = async data => baseAxios.patch(`${BASE_SCREENS}${data.id}/`, data.updates)
+export const updateScreen = async data => baseAxios.patch(`${BASE_SCREENS}${data.id}/`, data.updates, {
+    headers: { Authorization: `JWT ${data.access}`}
+})
+.then(res => console.log(res))
+.catch(err => console.log(err))
 
 export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?customer=${data.id}`, {
     headers: { Authorization: `JWT ${data.access}`}

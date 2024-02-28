@@ -18,11 +18,6 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
         onSuccess: queryClient.invalidateQueries(['orders'])
     })
 
-    const {mutate: updateOrderMutation} = useMutation({
-        mutationFn: data => updateOrder(data),
-        onSuccess: queryClient.invalidateQueries(['orders'])
-    })
-
     const {mutate: updateScreenMutation} = useMutation({
         mutationFn: data => updateScreen(data),
     })
@@ -38,12 +33,11 @@ const OrderForm = ({ order, screenId, days, setLoading }) => {
         const formData = new FormData()
         formData.append('image', img)
         createOrderReceiptMutation({ access: user.accessToken, orderId:order.id, image:formData })
-        updateOrderMutation({ access: user.accessToken, orderId:order.id, updates: {status: 'P'} }) 
 
         const subscribed_at = moment().format('YYYY-MM-DD')
         const due_date = moment(moment(subscribed_at).add(days, 'days').calendar()).format('YYYY-MM-DD')
 
-        updateScreenMutation({ id: screenId, updates: {
+        updateScreenMutation({ id: screenId, access: user.accessToken, updates: {
           available: false, 
           period: order.period, 
           subscribed_at,

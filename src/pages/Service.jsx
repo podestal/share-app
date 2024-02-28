@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Purchase from '../components/Purchase'
-import useScreen from '../hooks/useScreen'
+import { useQuery } from '@tanstack/react-query'
+import { getScreen } from '../api/api'
 
 const Service = () => {
 
     const params = useParams()
 
-    const {data: screen, isLoading, isError, error} = useScreen(params.id)
+    const {data: screen, isLoading, isError, error} = useQuery({
+      queryKey: ['screen'],
+      queryFn: () => getScreen({ id: params.id })
+  })
 
     if (isLoading) return <p>Loading ...</p>
 

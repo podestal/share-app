@@ -18,7 +18,10 @@ const Order = ({ order }) => {
 
     const {mutate: updateOrderMutation} = useMutation({
         mutationFn: data => updateOrder(data),
-        onSuccess: res => queryClient.invalidateQueries(['orders']),
+        onSuccess: res => {
+            console.log(res)
+            queryClient.invalidateQueries(['orders'])},
+        onError: err => console.log(err)
     })
 
     const {mutate: deleteOrderMutation} = useMutation({
@@ -40,12 +43,15 @@ const Order = ({ order }) => {
     const handleCompleteOrder = () => {
         updateOrderMutation({ access: user.accessToken, orderId:order.id, updates: {status: 'C'} })
         confirmOrderMutation({email: order.customer.user.email})
-        updateScreenMutation({ id: order.screen, updates: {
+        updateScreenMutation({ id: order.screen, access: user.accessToken, updates: {
             customer: order.customer.id,
         }})
     }
 
     const handleDeleteOrder = () => {
+        updateScreenMutation({ id: order.screen, access: user.accessToken, updates: {
+            available: true,
+        }})
         deleteOrderMutation({ access: user.accessToken, orderId:order.id })
     }
 
