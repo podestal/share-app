@@ -6,6 +6,7 @@ import Features from './Features'
 import { createOrder } from '../api/api'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 
 const customStyles = {
   option: (provided, state) => ({
@@ -63,7 +64,7 @@ const Purchase = ({ screen }) => {
       ?
 
         <div className='purchase-container'>
-          {console.log('total price',totalPrice)}
+          {console.log('screen', screen)}
           <div className='purchase-options-container'>
             <p>{errorMsg}</p>
             <h2>Price</h2>
@@ -92,7 +93,6 @@ const Purchase = ({ screen }) => {
             <Features 
               serviceId={screen.service.id}
               serviceTitle={screen.service.platform}
-              features={screen.service.features}
             />
           </div>
       </div>

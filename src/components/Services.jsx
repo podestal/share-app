@@ -19,49 +19,11 @@ const Services = () => {
                                 <p>{error.message}</p>
                             </div>)
 
-    if (isSuccess) {
-        // const filteredServices = data.data
-        // // .filter(service => {
-        // //     if (service.screens.length > 1) {
-        // //         service.screens.map(screen => {
-        // //             if (screen.available == true) {
-        // //                 return service
-        // //             }
-        // //         })
-        // //     }
-        // .filter(service => {
-        //     if (service.screens.length > 0) {
-        //         const availableScreens = service.screens.filter(screen => screen.available == true)
-        //         if (availableScreens.length > 0) {
-        //             return service
-        //         }
-        //     }
-        // })
-        
-        // console.log('services filtered', filteredServices)
-        setServices(data.data)
-    }
+    if (isSuccess) {setServices(data.data)}
     
     return (
         <div className='services-container'>
             {services && services
-                // .filter(service => service.screens > 0)
-                // .map(service => (
-                //     <Service 
-                //         key={service.id}
-                //         service={service}
-                //     />
-                // ))
-                // .filter(service => {
-                //     if (service.screens.length > 1) {
-                //         service.screens.map(screen => {
-                //             if (screen.available == true) {
-                //                 return service
-                //             }
-                //         })
-                //     }
-                //     // 
-                // })
                 .filter(service => {
                     if (service.screens.length > 0) {
                         const availableScreens = service.screens.filter(screen => screen.available == true)
