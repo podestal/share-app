@@ -13,6 +13,7 @@ const Service = ({ service }) => {
 
   return (
     <div className="service-container service-container-show">
+        {console.log(service)}
         <div className="service-data">
             <Link to={user ? `/service/${service.id}` : '/login'}><h3 className="service-title">{service.comercial_name}</h3></Link>
             <p className="service-price service-price-usd">{(service.price * 0.91).toFixed(2)} USD</p>
