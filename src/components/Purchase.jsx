@@ -56,10 +56,22 @@ const Purchase = ({ screen }) => {
     if (period == "") {
       return setErrorMsg("Selecciona un periodo")
     }
-    createOrderMutation({ access: user.accessToken, order: {service: screen.service.id, customer: user.customerId, total: totalPrice, period, days, screen: screen.id} })
+    createOrderMutation({ 
+      access: user.accessToken, 
+      order: {
+        total: totalPrice, 
+        period, 
+        days, 
+        screen: screen.id,
+        customer_first_name: user.firstName,
+        customer_last_name: user.lastName,
+        service_platform: screen.service.platform,
+      } 
+    })
   }
   return (
     <>
+      {console.log(screen)}
       {screen
       ?
 

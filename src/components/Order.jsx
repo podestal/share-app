@@ -79,6 +79,7 @@ const Order = ({ order }) => {
 
   return (
     <div className='order-container'>
+        {console.log('user', user)}
         <p>{errorMsg}</p>
         <h3>Order Status: {orderStatus[order?.status]}</h3>
         <h3>Customer:</h3>
