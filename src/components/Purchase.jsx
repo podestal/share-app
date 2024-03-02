@@ -45,10 +45,8 @@ const Purchase = ({ screen }) => {
   const {mutate: createOrderMutation} = useMutation({
     mutationFn: data => createOrder(data),
     onSuccess: res => {
-      console.log(res)
       navigate('/payment', { replace: true, state: {order: res.data, screenId: screen.id, days, totalPrice} })
     },
-    onError: err => console.log(err)
   })
 
   const handleSubmit = e => {
@@ -84,7 +82,6 @@ const Purchase = ({ screen }) => {
       ?
 
         <div className='purchase-container'>
-          {console.log('screen', screen)}
           <div className='purchase-options-container'>
             <p>{errorMsg}</p>
             <h2>Price</h2>

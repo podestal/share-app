@@ -45,8 +45,6 @@ export const getScreen = async data => baseAxios.get(`${SCREEN}${data.id}`)
 export const updateScreen = async data => baseAxios.patch(`${BASE_SCREENS}${data.id}/`, data.updates, {
     headers: { Authorization: `JWT ${data.access}`}
 })
-.then(res => console.log(res))
-.catch(err => console.log(err))
 
 export const customerScreen = async data => baseAxios.get(`${BASE_SCREENS}?customer=${data.id}`, {
     headers: { Authorization: `JWT ${data.access}`}

@@ -28,7 +28,6 @@ const Order = ({ order }) => {
     const {mutate: deleteOrderMutation} = useMutation({
         mutationFn: data => deleteOrder(data),
         onSuccess: res => queryClient.invalidateQueries(['orders']),
-        onError: err => console.log(err),
     })
 
     const {mutate: updateScreenMutation} = useMutation({
@@ -79,7 +78,6 @@ const Order = ({ order }) => {
 
   return (
     <div className='order-container'>
-        {console.log('order', order)}
         <p>{errorMsg}</p>
         <h3>Order Status: {orderStatus[order?.status]}</h3>
         <h3>Customer:</h3>
