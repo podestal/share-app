@@ -6,9 +6,9 @@ const AuthRequired = () => {
     const [access, setAccess] = useState(JSON.parse(localStorage.getItem('access')) || "")
 
   return (
-        access 
-        ? <Outlet />
-        : <Navigate to='/login' />
+      access
+      ? <Outlet />
+      : <Navigate to='/login' />
   )
 }
 

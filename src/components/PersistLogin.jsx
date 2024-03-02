@@ -18,6 +18,7 @@ const PersistLogin = () => {
         onSuccess: res => {
             setUser({
              accessToken: access,
+             refreshToken: refreshToken,
              customerId: res.data.id,
              active: res.data.active,
              userId: res.data.user.id,
@@ -30,12 +31,14 @@ const PersistLogin = () => {
     const {mutate: refresh} = useRefresh(user, setUser, setAccess)
 
     useEffect(() => {
-        const exp = jwtDecode(access).exp
-        const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
-        if (isExpired) {
-            refresh({ refresh: refreshToken })
+        if(!user?.accessToken || !user?.username) {
+            const exp = jwtDecode(access).exp
+            const isExpired = dayjs.unix(exp).diff(dayjs()) < 1
+            if (isExpired) {
+                refresh({ refresh: refreshToken })
+            }
+            getCustomerMutation({ access })
         }
-        getCustomerMutation({ access })
     }, [access])
 
   return (
