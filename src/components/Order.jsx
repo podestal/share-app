@@ -82,10 +82,10 @@ const Order = ({ order }) => {
         <p>{errorMsg}</p>
         <h3>Order Status: {orderStatus[order?.status]}</h3>
         <h3>Customer:</h3>
-        <p>Name: {order?.customer?.user?.first_name}</p>
-        <p>Lastname: {order?.customer?.user?.last_name}</p>
+        <p>Name: {order?.customer_first_name}</p>
+        <p>Lastname: {order?.customer_last_name}</p>
         <h3>Service:</h3>
-        <p>Platform: {order?.service.platform}</p>
+        <p>Platform: {order?.service_platform}</p>
         <p>Price: {order?.total}</p>
         <p>Period: {order?.period}</p>
         <h3>Receipt:</h3>
