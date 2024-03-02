@@ -53,18 +53,18 @@ const Order = ({ order }) => {
         setErrorMsg("")
         setSuccessMsg("")
         confirmOrderMutation({
-            email: order.customer.user.email,
-            username: order.screen.username,
-            password: order.screen.password,
-            profile: order.screen.position,
+            email: order.customer_email,
+            username: order.screen_username,
+            password: order.screen_password,
+            profile: order.screen_profile,
         })
     }
 
     const handleAssignScreen = () => {
         setErrorMsg("")
         setSuccessMsg("")
-        updateScreenMutation({ id: order.screen.id, access: user.accessToken, updates: {
-            customer: order.customer.id,
+        updateScreenMutation({ id: order.screen_id, access: user.accessToken, updates: {
+            customer: order.customer_id,
         }})
     }
 
@@ -79,7 +79,7 @@ const Order = ({ order }) => {
 
   return (
     <div className='order-container'>
-        {console.log('user', user)}
+        {console.log('order', order)}
         <p>{errorMsg}</p>
         <h3>Order Status: {orderStatus[order?.status]}</h3>
         <h3>Customer:</h3>

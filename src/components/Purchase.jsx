@@ -45,6 +45,7 @@ const Purchase = ({ screen }) => {
   const {mutate: createOrderMutation} = useMutation({
     mutationFn: data => createOrder(data),
     onSuccess: res => {
+      console.log(res)
       navigate('/payment', { replace: true, state: {order: res.data, screenId: screen.id, days, totalPrice} })
     },
     onError: err => console.log(err)
@@ -57,6 +58,8 @@ const Purchase = ({ screen }) => {
       return setErrorMsg("Selecciona un periodo")
     }
     createOrderMutation({ 
+
+      // 'customer_id', 'customer_email', 'screen_username', 'screen_password', 'screen_profile'
       access: user.accessToken, 
       order: {
         total: totalPrice, 
@@ -66,12 +69,17 @@ const Purchase = ({ screen }) => {
         customer_first_name: user.firstName,
         customer_last_name: user.lastName,
         service_platform: screen.service.platform,
+        customer_id: user.customerId,
+        customer_email: user.email,
+        screen_username: screen.username,
+        screen_password: screen.password,
+        screen_profile: screen.position,
+        screen_id: screen.id,
       } 
     })
   }
   return (
     <>
-      {console.log(screen)}
       {screen
       ?
 
