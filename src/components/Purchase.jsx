@@ -23,16 +23,16 @@ const Purchase = ({ screen }) => {
   const [price, setPrice] = useState(0)
   const navigate = useNavigate()
 
-  const priceOne = initialPrice
-  const priceThree = (initialPrice * 0.97).toFixed(2)
-  const priceSix = (initialPrice * 0.94).toFixed(2)
-  const priceNine = (initialPrice * 0.91).toFixed(2)
+  const priceOne = screen?.service.one_price
+  const priceThree = screen?.service.three_price
+  const priceSix = screen?.service.six_price
+  const priceNine = screen?.service.nine_price
 
   const options = [
     {value: 'O', label: 'Un Mes', price: priceOne, totalPrice: priceOne , days: 30},
     {value: 'T', label: 'Tres Meses', price: priceThree, totalPrice: (priceThree * 3).toFixed(2) , days: 90},
     {value: 'S', label: 'Seis Meses', price: priceSix, totalPrice: (priceSix * 6).toFixed(2) ,days: 180},
-    {value: 'N', label: 'Nueve Meses', price: priceNine, totalPrice: (priceNine * 9).toFixed(2) ,days: 270},
+    // {value: 'N', label: 'Nueve Meses', price: priceNine, totalPrice: (priceNine * 9).toFixed(2) ,days: 270},
   ]
 
   const {user} = useUser()
@@ -56,8 +56,6 @@ const Purchase = ({ screen }) => {
       return setErrorMsg("Selecciona un periodo")
     }
     createOrderMutation({ 
-
-      // 'customer_id', 'customer_email', 'screen_username', 'screen_password', 'screen_profile'
       access: user.accessToken, 
       order: {
         total: totalPrice, 
@@ -83,6 +81,7 @@ const Purchase = ({ screen }) => {
 
         <div className='purchase-container'>
           <div className='purchase-options-container'>
+            {console.log('screen', screen)}
             <p>{errorMsg}</p>
             <h2>Price</h2>
             {days ? <p>S/.{price} al mes</p> : <p>S/.0.00 al mes</p>}

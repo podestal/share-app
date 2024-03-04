@@ -17,7 +17,7 @@ const ORDERS = '/api/orders/'
 const PAYMENT_CONFIRM = 'payment_confirmation/'
 
 const baseAxios = axios.create({
-    baseURL: BASE_URL_DEV  
+    baseURL: BASE_URL_PROD  
 })
 
 export const login = async data => baseAxios.post(LOGIN, data)
